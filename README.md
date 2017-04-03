@@ -8,4 +8,4 @@ please view attached project page for production cards
 
 ## ERD
 
-<img src="img/Orchat.png">
+<img src="img/OrchatERD.png">
