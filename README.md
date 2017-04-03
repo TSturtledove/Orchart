@@ -2,7 +2,7 @@
 
 ## An Organizing Chart system for Orchards
 
-The purpose of Orchart is to offer farmers a charting system to effectively track the treatment of trees and other plants in orchards and fields.  By letting the farmers easily store and update information about their fields Orchart lets farmers organize their treatments better.
+The purpose of Orchart is to offer farmers a charting system to effectively track the treatment of trees and other plants in orchards and fields.  This is accomplished through letting farmers enter the date and type of treatment they used per plant or field.  Orchart gives farmers the option of a more organized and modifiable digital version of paper charts.
 
 please view attached project page for production cards
 
