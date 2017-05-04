@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 //require in the constants
 const express = require("express");
