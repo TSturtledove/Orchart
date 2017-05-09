@@ -22,9 +22,9 @@ module.exports.create = ({body: {name, password, confirmation}}, res) => {
       .save()
       .then( ()=> {
         res.redirect("/")
-      });
+      })
       .catch( (err)=> res.render("register", {msg: "problem on save"}));
-    });
+    })
     .catch( (err)=> res.render("register", {msg: "problem on findOneByUsername"}));
   } else {
     res.render("register", {msg: "password and confirmation don't match"});

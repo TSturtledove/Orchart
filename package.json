@@ -4,6 +4,8 @@
   "description": "The purpose of Orchart is to offer farmers a charting system to effectively track the treatment of trees and other plants in orchards and fields.  This is accomplished through letting farmers enter the date and type of treatment they used per plant or field.  Orchart gives farmers the option of a more organized and modifiable digital version of paper charts.",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon ./app.js",
+    "frontend": "nodemon ./public/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

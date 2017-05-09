@@ -30,23 +30,23 @@ const app = angular.module("Orchart", ["ngRoute"]);
 app.config(["$routeProvider", function($routeProvider) {
   $routeProvider
   .when("/", {
-    templateUrl: "",
+    templateUrl: "angularPatials/home.html",
     controller: "",
     resolve:
   }).when("/login", {
-    templateUrl: "",
+    templateUrl: "angularPatials/login.html",
     controller: "",
     resolve:
   }).when("/profile", {
-    templateUrl: "",
+    templateUrl: "angularPatials/profile.html",
     controller: "",
     resolve:
   }).when("/fields", {
-    templateUrl: "",
+    templateUrl: "angularPatials/fields.html",
     controller: "",
     resolve:
   }).when("/plants", {
-    templateUrl: "",
+    templateUrl: "angularPatials/plants.html",
     controller: "",
     resolve:
   }).when("/", {
