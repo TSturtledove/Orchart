@@ -1,6 +1,6 @@
 {
   "name": "orchart",
-  "description": "The purpose of Orchart is to offer farmers a charting system to effectively track the treatment of trees and other plants in orchards and fields.  This is accomplished through letting farmers enter the date and type of treatment they used per plant or field.  Orchart gives farmers the option of a more organized and modifiable digital version of paper charts.",
+  "description": "Orchart is a field record helper",
   "main": "app.js",
   "authors": [
     "TSturtledove <roberttortorelli@yahoo.com>"
