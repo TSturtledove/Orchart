@@ -1,21 +1,52 @@
 "use strict";
 
 //require in the constants
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 const cors =require("cors");
 const routes = require("./routes/");
+const session = require("express-session");
+const passport = require("passport");
+const KnexSessionStore = require("connect-session-knex")(session);
+const { knex } = require("./db/database");
+
 
 const app = express();
 
 app.use(cors())
+//setting base route
+app.use("/api/v1/", routes);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
+app.use(session({
+  store: new KnexSessionStore({
+    knex,
+    tablename: "sessions"
+  }),
+  resave:false,
+  saveUninitialized: false,
+  secret: process.env.SESSION_SECRET || "farmersecretkey"
+}))
 
-//setting base route
-app.use("/api/v1/", routes);
+require("./lib/passport-strategies")
+app.use(passport.initialize())
+app.use(passport.session())
+
+app.use( (req, res, next) => {
+  app.locals.username = req.user && req.user.username
+  next()
+})
+
+app.use(express.static(path.join(__dirname + '/public')))
+app.use(routes)
+
+app.use((req, res) => {
+    res.render('404')
+})
+
 
 //the catch for the 404 error
 app.use(function(req, res, next) {

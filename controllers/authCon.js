@@ -1,7 +1,7 @@
 "use strict";
 
-const Farmer = require("../models/farmers")
 const passport = require("passport");
+const Farmer = require("../models/farmers")
 module.exports.authcheck = (req, res, next) =>
   passport.authenticate("local", (err, user, msg) => {
     if(err) return next(err)
@@ -13,20 +13,29 @@ module.exports.authcheck = (req, res, next) =>
     });
   })(req, res, next)
 
-module.exports.create = ({body: {name, password, confirmation}}, res) => {
+module.exports.create = ({body: {name, password, confirmation}}, res, next) => {
   if (password === confirmation) {
-    Farmer.findOneByUsername(username)
+    Farmer.findOneByUsername(name)
     .then( (user) => {
-      if (user) return res.render("register", {msg: "Name already used"});
-      return User.forge({username, password})
+      if (user) return res.render("login", {msg: "Name already used"});
+      return Farmer.forge({name, password})
       .save()
       .then( ()=> {
-        res.redirect("/")
+        passport.authenticate("local", (err, user, msg) => {
+          if(err) return next(err)
+          if(!user) return res.render("login", {page: "login", msg})
+          req.login(user, (err)=> {
+            if (err) return next(err)
+            req.session.save( ()=> {
+              res.redirect("/")
+            })
+          })
+        })(req, res, next)
       })
-      .catch( (err)=> res.render("register", {msg: "problem on save"}));
+      .catch( (err)=> res.render("login", {msg: "problem on save"}));
     })
-    .catch( (err)=> res.render("register", {msg: "problem on findOneByUsername"}));
+    .catch( (err)=> res.render("login", {msg: "problem on findOneByUsername"}));
   } else {
-    res.render("register", {msg: "password and confirmation don't match"});
+    res.render("login", {msg: "password and confirmation don't match"});
   }
 }
