@@ -2,7 +2,7 @@
 
 const passport = require("passport")
 const {Strategy} = require("passport-local")
-const {knex} = require("../db/database")
+const {knex} = require("../../db/database")
 
 const Farmer = require("../models/farmers")
 

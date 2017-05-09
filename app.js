@@ -6,7 +6,7 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 const cors =require("cors");
-const routes = require("./routes/");
+const routes = require("./server/routes/");
 const session = require("express-session");
 const passport = require("passport");
 const KnexSessionStore = require("connect-session-knex")(session);
@@ -31,7 +31,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET || "farmersecretkey"
 }))
 
-require("./lib/passport-strategies")
+require("./server/lib/passport-strategies")
 app.use(passport.initialize())
 app.use(passport.session())
 
