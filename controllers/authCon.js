@@ -1,5 +1,6 @@
 "use strict";
 
+const Farmer = require("../models/farmers")
 const passport = require("passport");
 module.exports.authcheck = (req, res, next) =>
   passport.authenticate("local", (err, user, msg) => {
@@ -12,9 +13,9 @@ module.exports.authcheck = (req, res, next) =>
     });
   })(req, res, next)
 
-module.exports.create = ({body: {username, password, confirmation}}, res) => {
+module.exports.create = ({body: {name, password, confirmation}}, res) => {
   if (password === confirmation) {
-    User.findOneByUsername(username)
+    Farmer.findOneByUsername(username)
     .then( (user) => {
       if (user) return res.render("register", {msg: "Name already used"});
       return User.forge({username, password})
@@ -25,5 +26,7 @@ module.exports.create = ({body: {username, password, confirmation}}, res) => {
       .catch( (err)=> res.render("register", {msg: "problem on save"}));
     });
     .catch( (err)=> res.render("register", {msg: "problem on findOneByUsername"}));
+  } else {
+    res.render("register", {msg: "password and confirmation don't match"});
   }
 }

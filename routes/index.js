@@ -9,6 +9,8 @@ const {authcheck} = require("../controllers/authCon")
 router.use(require("./homeRoute"));
 router.use(require("./registeruserRoute"));
 router.post("/authcheck", authcheck);
+router.post("/authcheck/new", create);
+
 
 router.use( (req, res, next) => {
   if (req.isAuthenticated()) {
