@@ -3,10 +3,12 @@
 const {Router} = require("express");
 const router = Router();
 
+const {authcheck} = require("../controllers/authCon")
 
 // routes to be used
 router.use(require("./homeRoute"));
 router.use(require("./registeruserRoute"));
+router.post("/authcheck", authcheck);
 
 router.use( (req, res, next) => {
   if (req.isAuthenticated()) {
