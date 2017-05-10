@@ -7,6 +7,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const cors =require("cors");
 const routes = require("./server/routes/");
+console.log("routes", routes)
 const session = require("express-session");
 const passport = require("passport");
 const KnexSessionStore = require("connect-session-knex")(session);
@@ -17,10 +18,10 @@ const app = express();
 
 app.use(cors())
 //setting base route
-app.use("/api/v1/", routes);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
+
 app.use(session({
   store: new KnexSessionStore({
     knex,
@@ -40,12 +41,8 @@ app.use( (req, res, next) => {
   next()
 })
 
-app.use(express.static(path.join(__dirname + '/public')))
-app.use(routes)
-
-app.use((req, res) => {
-    res.render('404')
-})
+app.use(express.static("public"))
+app.use("/api/v1/", routes);
 
 
 //the catch for the 404 error

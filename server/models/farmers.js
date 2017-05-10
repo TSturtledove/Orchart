@@ -16,12 +16,12 @@ const Farmer = bookshelf.Model.extend({
     return this.forge({name})
     .fetch()
     .then( (user) => {
-      // console.log("got user", user.get("name"));
+      console.log("got user", user);
       return user;
     })
-    .catch( ()=> {
-      // console.log("did not find user");
-      return(null)
+    .catch( (err)=> {
+      console.log("did not find user", err);
+      // return(null)
     });
   }
 });

@@ -1,4 +1,5 @@
 app.controller("addfarmers", function($scope, authFactory){
+  // $scope.user ={username:"", password:""}
 
   $scope.RegisterUser = () => {
     console.log("you hit this")

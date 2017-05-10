@@ -21,24 +21,29 @@ const localStrategy = new Strategy({
   passwordField: 'password'//stores the password for persistance during login session
 },
   (name, passwordStr, done) => {
+    console.log("name",name)
     Farmer.findOneByUsername(name)//calls the findOneByUsername fuction form userModel
     .then( (user) => {//the "user" here is a variable returned form the above search and is different from the "User" above
       if (user) {
-      return Promise.all([
-        user,
-        user.comparePass(passwordStr)//this is comparing the input password "passwordString" with the one stored on the database for the found user
-      ])
-    }
+        console.log("hello")
+        return Promise.all([
+          user,
+          user.comparePass(passwordStr)//this is comparing the input password "passwordString" with the one stored on the database for the found user
+        ])
+        .then( ([user, matches]) => {
+          if (matches) {
+            done(null, user, {msg: 'Login successful'})
+          } else {
+            done(null, null, {msg: 'Password is incorrect'})
+          }
+        })
+      }
+    console.log("findOneByUsername then called")
     done(null, null, {msg: 'Username does not exist in system'})
   })
-  .then( ([user, matches]) => {
-    if (matches) {
-      done(null, user, {msg: 'Login successful'})
-    } else {
-      done(null, null, {msg: 'Password is incorrect'})
-    }
+  .catch( (err)=> {
+    console.log("dog food", err)
   })
-  .catch(done)
 })
 
 passport.use(localStrategy)
