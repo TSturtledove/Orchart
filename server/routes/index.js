@@ -3,13 +3,14 @@
 const {Router} = require("express");
 const router = Router();
 
-const {authcheck, create} = require("../controllers/authCon")
+const {authcheck, create, destroy} = require("../controllers/authCon")
 
 // routes to be used
 // router.use(require("./homeRoute"));
 // router.use(require("./registeruserRoute"));
 router.post("/authcheck", authcheck);
 router.post("/authcheck/new", create);
+router.post("/authcheck/logout", destroy);
 
 
 router.use( (req, res, next) => {

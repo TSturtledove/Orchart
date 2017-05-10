@@ -7,13 +7,13 @@ const app = angular.module("Orchart", ["ngRoute"]);
 app.config(["$routeProvider", function($routeProvider) {
   $routeProvider
   .when("/", {
-    templateUrl: "angularPartials/login.html",
+    templateUrl: "angularPartials/home.html",
     controller: "homeCon"
-  //   // resolve:
-  // }).when("/login", {
-  //   templateUrl: "angularPartials/login.html",
-  //   controller: "addfarmers"
-  //   // resolve:
+    // resolve:
+  }).when("/login", {
+    templateUrl: "angularPartials/login.html",
+    controller: "addfarmers"
+    // resolve:
   // }).when("/profile", {
   //   templateUrl: "angularPartials/profile.html",
   //   controller: ""

@@ -1,17 +1,24 @@
 "use strict";
 
 const passport = require("passport");
+
 const Farmer = require("../models/farmers")
-module.exports.authcheck = (req, res, next) =>
+
+module.exports.authcheck = (req, res, next) =>{
   passport.authenticate("local", (err, user, msg) => {
+    console.log("goat there")
     if(err) return next(err)
-    if(!user) return res.render("login", {page: "login", msg});
+    if(!user) return console.log("nope");
 
     req.login(user, (err)=> {
       if (err) return next(err)
-      res.redirect("/")
-    });
+      req.session.save( ()=> {
+        res.redirect("/")
+      })
+      console.log("user logged in", user)
+    })
   })(req, res, next)
+}
 
 module.exports.create = ({body: {name, password, confirmation}}, res, next) => {
   if (password === confirmation) {
@@ -38,4 +45,9 @@ module.exports.create = ({body: {name, password, confirmation}}, res, next) => {
   } else {
     res.render("login", {msg: "password and confirmation don't match"});
   }
+}
+
+module.exports.destroy = (req, res) => {
+  req.logout()
+  res.redirect("/")
 }
