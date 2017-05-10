@@ -13,6 +13,7 @@ const Farmer = bookshelf.Model.extend({
   }
 }, {
   findOneByUsername: function(name) {
+    console.log("name in finone", name)
     return this.forge({name})
     .fetch()
     .then( (user) => {

@@ -7,7 +7,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const cors =require("cors");
 const routes = require("./server/routes/");
-console.log("routes", routes)
+// console.log("routes", routes)
 const session = require("express-session");
 const passport = require("passport");
 const KnexSessionStore = require("connect-session-knex")(session);

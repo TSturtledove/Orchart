@@ -3,8 +3,10 @@ app.factory("authFactory", function($http) {
     add: function(newuser) {
       return new Promise((resolve, reject) => {
         $http.post(`http://localhost:3000/api/v1/authcheck/new`, newuser)
-        .then((data)=> {
-          resovle(data.data)
+        .then((user)=> {
+          resovle(user)
+        }).catch( (err)=> {
+          reject(err)
         })
       })
     },
@@ -12,8 +14,11 @@ app.factory("authFactory", function($http) {
       console.log("user", user)
       return new Promise((resolve, reject) => {
         $http.post(`http://localhost:3000/api/v1/authcheck`, user)
-        .then((data)=> {
-          resolve(data.data)
+        .then((user)=> {
+          console.log("factory user", user)
+          resolve(user)
+        }).catch( (err)=> {
+          reject(err)
         })
       })
     },
