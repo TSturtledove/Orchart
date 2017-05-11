@@ -32,10 +32,10 @@ module.exports.create = (req, res, next) => {
       console.log("checking body", {name, password})
       return Farmer.forge({name, password})
       .save()
-      .then( ()=> {
+      .then( (user)=> {
         passport.authenticate("local", (err, user, msg) => {
           if(err) return next(err)
-          console.log("got to here first")
+          console.log("got to here first", user)
           if(!user) return res.status(400).json(user)//if err when registering this should send user back to registerpage
           console.log("got to here")
           req.login(user, (err)=> {
