@@ -26,7 +26,9 @@ app.factory("authFactory", function($http) {
       return new Promise((resolve, reject) => {
         $http.post(`http://localhost:3000/api/v1/authcheck/logout`)
         .then((data)=> {
-          resolve(data.data)
+          resolve()
+        }).catch( (err)=> {
+          reject(err)
         })
       })
     }

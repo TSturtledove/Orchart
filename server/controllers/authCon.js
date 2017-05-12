@@ -67,7 +67,8 @@ module.exports.create = (req, res, next) => {
 }
 
 module.exports.destroy = (req, res) => {
-  console.log("going to logout")
-  return req.logout()
+  console.log("going to logout", req.user.name)
+  req.logout()
+  return res.json({})
   console.log("logged out")
 }

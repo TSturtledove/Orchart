@@ -38,5 +38,6 @@ app.controller("addfarmers", function($scope, authFactory){
       $scope.msg="User not found"
       $scope.$apply()
     })
+    $scope.user = {}
   }
 })
