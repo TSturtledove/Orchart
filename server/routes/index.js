@@ -3,6 +3,7 @@
 const {Router} = require("express");
 const router = Router();
 
+const {seedfield} = require("../controllers/fieldsCon")
 const {authcheck, create, destroy} = require("../controllers/authCon")
 
 // routes to be used
@@ -20,7 +21,7 @@ router.use( (req, res, next) => {
     res.redirect("/")
   }
 });
-
+router.post("/field/new", seedfield)
 //the way this is currently setup each of these links are referenceing "Route"
 //pages that will have the "get", "post", "delete", etc. commands
 //for reference it is like the concat-dating project

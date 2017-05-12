@@ -14,9 +14,9 @@ app.config(["$routeProvider", function($routeProvider) {
     templateUrl: "angularPartials/login.html",
     controller: "addfarmers"
     // resolve:
-  // }).when("/profile", {
-  //   templateUrl: "angularPartials/profile.html",
-  //   controller: ""
+  }).when("/profile", {
+    templateUrl: "angularPartials/profile.html",
+    controller: "profileCon"
   //   // resolve:
   // }).when("/fields", {
   //   templateUrl: "angularPartials/fields.html",

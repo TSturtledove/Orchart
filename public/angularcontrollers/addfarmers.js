@@ -3,8 +3,15 @@ app.controller("addfarmers", function($scope, authFactory){
   $scope.Logout = () => {
     console.log("you hit the logout")
     authFactory.logoutFarmer()
-    console.log("got back to logout frontend")
-    $scope.msg="You have logged out"
+    .then( ()=> {
+      console.log("got back to logout frontend")
+      $scope.msg="You have logged out"
+
+    }).catch( (err) => {
+      console.log("error in logging out", err)
+      $scope.msg="Please login first"
+      $scope.$apply()
+    })
   },
 
   $scope.RegisterUser = () => {
