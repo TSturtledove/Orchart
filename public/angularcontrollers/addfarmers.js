@@ -5,8 +5,6 @@ app.controller("addfarmers", function($scope, authFactory){
     authFactory.logoutFarmer()
     console.log("got back to logout frontend")
     $scope.msg="You have logged out"
-    $scope.$apply()
-
   },
 
   $scope.RegisterUser = () => {

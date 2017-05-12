@@ -67,7 +67,7 @@ module.exports.create = (req, res, next) => {
 }
 
 module.exports.destroy = (req, res) => {
-  req.logout()
+  console.log("going to logout")
+  return req.logout()
   console.log("logged out")
-  // res.redirect("/")
 }
