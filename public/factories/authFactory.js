@@ -4,7 +4,7 @@ app.factory("authFactory", function($http) {
       return new Promise((resolve, reject) => {
         $http.post(`http://localhost:3000/api/v1/authcheck/new`, newuser)
         .then((user)=> {
-          resovle(user)
+          resolve(user)
         }).catch( (err)=> {
           reject(err)
         })
@@ -25,9 +25,9 @@ app.factory("authFactory", function($http) {
     logoutFarmer: function() {
       return new Promise((resolve, reject) => {
         $http.post(`http://localhost:3000/api/v1/authcheck/logout`)
-        .then((data)=> {
-          resolve(data.data)
-        })
+        // .then((data)=> {
+        //   resolve(data.data)
+        // })
       })
     }
 

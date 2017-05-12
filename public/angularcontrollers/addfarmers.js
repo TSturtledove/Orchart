@@ -4,6 +4,9 @@ app.controller("addfarmers", function($scope, authFactory){
     console.log("you hit the logout")
     authFactory.logoutFarmer()
     console.log("got back to logout frontend")
+    $scope.msg="You have logged out"
+    $scope.$apply()
+
   },
 
   $scope.RegisterUser = () => {
@@ -12,6 +15,9 @@ app.controller("addfarmers", function($scope, authFactory){
     authFactory.add($scope.newuser)
     .then((user) => {
       console.log("made a thing", user)
+      $scope.msg="You are now registered, please login"
+      $scope.$apply()
+
     }).catch( (err)=> {
       console.log("had an error in making profile", err)
       $scope.msg="Error in creating user, please try again"
@@ -25,6 +31,10 @@ app.controller("addfarmers", function($scope, authFactory){
     authFactory.getFarmer($scope.user)
     .then((user) => {
       console.log("all the way", user)
+      $scope.msg="You are now logged in"
+      $scope.$apply()
+
+
     }).catch((err)=> {
       console.log("errored out user", err)
       $scope.msg="User not found"

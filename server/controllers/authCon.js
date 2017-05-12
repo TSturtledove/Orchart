@@ -32,24 +32,33 @@ module.exports.create = (req, res, next) => {
       console.log("checking body", {name, password})
       return Farmer.forge({name, password})
       .save()
-      .then( ({name, password})=> {
-        console.log("does it get passed", {name, password})
-        passport.authenticate("local", (err, {name, password}, msg) => {
-          if(err) return next(err)
-          console.log("got to here first", {name, password})
-          if(!user) return res.status(200).json({name, password})//if err when registering this should send user back to registerpage
-          console.log("got to here")
-          req.login({name, password}, (err)=> {
-            if (err) return next(err)
-            req.session.save( ()=> {
-              res.redirect("/")
-            })
-          })
-        })(req, res, next)
-        console.log("error on save")
+      .then( ()=> {
+        // console.log("does it get passed", req.body)
+        // let {name, password} = req.body
+        // console.log("does it get passed after here", {name, password})
+        // console.log("does it get passed after here", name)
+        // let user = {name, password}
+        //
+        // passport.authenticate("local", (err, {name, password}, msg) => {
+        //   console.log("does it get here", name)
+        //   if(err) return next(err)
+        //   console.log("got to here first", user)
+        //   if(!user) return res.status(200).json(user)//if err when registering this should send user back to registerpage
+        //   console.log("got to here")
+        //   req.login(user, (err)=> {
+        //     console.log("login check", user)
+        //     if (err) return next(err)
+        //     req.session.save( ()=> {
+        //       res.redirect("/")
+        //     })
+        //   })
+        // })(req, res, next)
+        console.log("end of authenticate")
+        return res.json({})
       })
-      .catch( (err)=> res.status(400))//render("login", {msg: "problem on save"}));
-      console.log("error on findone")
+      .catch( (err)=>{ res.status(400)//render("login", {msg: "problem on save"}));
+      console.log("error on findone", err)
+    })
     })
     .catch( (err)=> res.status(400))//render("login", {msg: "problem on findOneByUsername"}));
   } else {
