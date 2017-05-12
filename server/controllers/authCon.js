@@ -32,13 +32,14 @@ module.exports.create = (req, res, next) => {
       console.log("checking body", {name, password})
       return Farmer.forge({name, password})
       .save()
-      .then( (user)=> {
-        passport.authenticate("local", (err, user, msg) => {
+      .then( ({name, password})=> {
+        console.log("does it get passed", {name, password})
+        passport.authenticate("local", (err, {name, password}, msg) => {
           if(err) return next(err)
-          console.log("got to here first", user)
-          if(!user) return res.status(400).json(user)//if err when registering this should send user back to registerpage
+          console.log("got to here first", {name, password})
+          if(!user) return res.status(200).json({name, password})//if err when registering this should send user back to registerpage
           console.log("got to here")
-          req.login(user, (err)=> {
+          req.login({name, password}, (err)=> {
             if (err) return next(err)
             req.session.save( ()=> {
               res.redirect("/")
@@ -58,5 +59,6 @@ module.exports.create = (req, res, next) => {
 
 module.exports.destroy = (req, res) => {
   req.logout()
-  res.redirect("/")
+  console.log("logged out")
+  // res.redirect("/")
 }

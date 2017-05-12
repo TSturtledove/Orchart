@@ -1,5 +1,10 @@
 app.controller("addfarmers", function($scope, authFactory){
   // $scope.user ={username:"", password:""}
+  $scope.Logout = () => {
+    console.log("you hit the logout")
+    authFactory.logoutFarmer()
+    console.log("got back to logout frontend")
+  },
 
   $scope.RegisterUser = () => {
     console.log("you hit this")
