@@ -1,0 +1,22 @@
+{
+  "name": "orchart",
+  "description": "Orchart is a field record helper",
+  "main": "app.js",
+  "authors": [
+    "TSturtledove <roberttortorelli@yahoo.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/TSturtledove/Orchart",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "^1.6.4",
+    "angular": "^1.6.4"
+  }
+}

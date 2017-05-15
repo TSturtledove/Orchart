@@ -1,4 +1,29 @@
 <div>
-  <a href=""><input type="button" value="Login"></a>
-  <a href=""><input type="button" value="Home"></a>
+  <!-- <a href="/#!/login"><input type="button" value="Login"></a> -->
+  <a href="/#!/login"><input type="button" value="Logout" ng-click="Logout()"></a>
+  <a href="/#!/"><input type="button" value="Home"></a>
 </div>
+<h3>{{msg}}</h3>
+<h1>Login here</h1>
+<fieldset>
+  <div>
+    <label for="username">Name</label>
+    <input type="text" ng-model="user.username" placeholder="Username" name="username">
+    <label for="password">Password</label>
+    <input type="password" ng-model="user.password" placeholder="******" name="password">
+    <input type="button" value="Login" ng-click="loginUser()">
+  </div>
+</fieldset>
+
+<h1>Register here</h1>
+<fieldset>
+  <div>
+    <label for="username">Name</label>
+    <input type="text" ng-model="newuser.name" placeholder="Username" name="username">
+    <label for="password">Password</label>
+    <input type="password" ng-model="newuser.password" placeholder="******" name="password">
+    <label for="passwordConfirmation">Password Confirmation</label>
+    <input type="password" ng-model="newuser.confirmation" placeholder="******" name="passwordConfirmation">
+    <input type="button" value="Register" ng-click="RegisterUser()">
+  </div>
+</fieldset>
