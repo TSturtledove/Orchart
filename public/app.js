@@ -40,9 +40,9 @@ app.config(["$routeProvider", function($routeProvider) {
     templateUrl: "angularPartials/profile.html",
     controller: "profileCon"
     // resolve: gatecheck
-  // }).when("/fields", {
-  //   templateUrl: "angularPartials/fields.html",
-  //   controller: ""
+  }).when("/fields/:fieldId", {
+    templateUrl: "angularPartials/fields.html",
+    controller: "fieldsCon"
   //   // resolve:
   // }).when("/plants", {
   //   templateUrl: "angularPartials/plants.html",
