@@ -31,6 +31,16 @@ app.factory("authFactory", function($http) {
           reject(err)
         })
       })
+    },
+    gatecheck: function() {
+      return new Promise((resolve, reject) => {
+        $http.get(`http://localhost:3000/api/v1/gatecheck`)
+        .then((data)=> {
+          resolve(user)
+        }).catch( (err) => {
+          reject(err)
+        })
+      })
     }
 
 

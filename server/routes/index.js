@@ -4,7 +4,7 @@ const {Router} = require("express");
 const router = Router();
 
 const {seedfield} = require("../controllers/fieldsCon")
-const {authcheck, create, destroy} = require("../controllers/authCon")
+const {authcheck, create, destroy, gatecheck} = require("../controllers/authCon")
 
 // routes to be used
 // router.use(require("./homeRoute"));
@@ -12,15 +12,16 @@ const {authcheck, create, destroy} = require("../controllers/authCon")
 router.post("/authcheck", authcheck);
 router.post("/authcheck/new", create);
 router.post("/authcheck/logout", destroy);
+router.get("/gatecheck", gatecheck);
 
 
-router.use( (req, res, next) => {
-  if (req.isAuthenticated()) {
-    next();
-  } else {
-    res.redirect("/")
-  }
-});
+// router.use( (req, res, next) => {
+//   if (req.isAuthenticated()) {
+//     next();
+//   } else {
+//     res.redirect("/")
+//   }
+// });
 router.post("/field/new", seedfield)
 //the way this is currently setup each of these links are referenceing "Route"
 //pages that will have the "get", "post", "delete", etc. commands

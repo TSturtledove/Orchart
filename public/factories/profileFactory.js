@@ -3,9 +3,11 @@ app.factory("profileFactory", function($http) {
     add: function(newfield) {
       return new Promise((resolve, reject) => {
         $http.post(`http://localhost:3000/api/v1/field/new`, newfield)
-        .then((user)=> {
-          resolve(user)
+        .then((field)=> {
+          console.log("got field back to factory", field)
+          resolve(field)
         }).catch( (err)=> {
+          console.log("fired error catch", err)
           reject(err)
         })
       })

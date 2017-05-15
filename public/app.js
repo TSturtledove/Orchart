@@ -1,6 +1,28 @@
 
 const app = angular.module("Orchart", ["ngRoute"]);
 
+// const gatecheck = {
+//   gatecheck ($rootscope, authFactory) {
+//     authFactory.gatecheck()
+//     .then( (user) => {
+//       if(!user) {
+//         redirectTo: "/"
+//       }
+//     })
+//   }
+// }
+
+// $scope.Profile = () => {
+//   console.log("you hit the profile button")
+//   authFactory.gatecheck()
+//   .then( (user) => {
+//     if(user) {
+//       redirectTo()
+//     }
+//   })
+// }
+
+
 //go through each route one b one to make the proper controller
 // and factory for each.  Also figure out how to do
 // the resolve/authcheck properly
@@ -17,7 +39,7 @@ app.config(["$routeProvider", function($routeProvider) {
   }).when("/profile", {
     templateUrl: "angularPartials/profile.html",
     controller: "profileCon"
-  //   // resolve:
+    // resolve: gatecheck
   // }).when("/fields", {
   //   templateUrl: "angularPartials/fields.html",
   //   controller: ""

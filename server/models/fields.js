@@ -4,7 +4,7 @@ const {bookshelf} = require("../../db/database");
 // const {compare} = require("bcryptjs");
 
 const Field = bookshelf.Model.extend({
-  tableName: "fields",
+  tableName: "fields"
   // compareName: function (fieldnameStr) {
     // console.log("password", passwordStr);
     // console.log("user", this.attributes);
@@ -13,10 +13,10 @@ const Field = bookshelf.Model.extend({
 }, {
   findOneByFieldname: function(name) {
     console.log("name passed to field finder", name)
-    return this.forge({name})
+    return this.where("name", name)
     .fetch()
     .then( (field) => {
-      console.log("got user", field);
+      console.log("got field", field);
       return field;
     })
     .catch( (err)=> {
