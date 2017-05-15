@@ -20,9 +20,9 @@ popPage()
     $scope.msg="You have logged out"
   }
 
-  $scope.fieldMaker = () => {
+  $scope.makeTreatment = () => {
     console.log("You're trying to make a new field")
-    profileFactory.add($scope.newfield)
+    profileFactory.add($scope.newtreatment)
     .then((field) => {
       popPage()
       console.log("You made a field", field)

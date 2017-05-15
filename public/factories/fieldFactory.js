@@ -1,8 +1,8 @@
 app.factory("fieldFactory", function($http) {
   return {
-    add: function(newfield) {
+    add: function(newtreatment) {
       return new Promise((resolve, reject) => {
-        $http.post(`http://localhost:3000/api/v1/field/new`, newfield)
+        $http.post(`http://localhost:3000/api/v1/field/newtreatment/${id}`, newtreatment)
         .then((field)=> {
           console.log("got field back to factory", field)
           resolve(field)
