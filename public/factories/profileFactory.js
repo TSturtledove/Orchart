@@ -33,7 +33,18 @@ app.factory("profileFactory", function($http) {
           reject(err)
         })
       })
+    },
+
+    getFields: function() {
+      return new Promise((resolve, reject) => {
+        $http.get(`http://localhost:3000/api/v1/fields`)
+        .then((data) => {
+          console.log("got data from back end", data)
+          resolve(data.data)
+        })
+      })
     }
+
 
 
   }

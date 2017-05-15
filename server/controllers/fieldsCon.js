@@ -2,6 +2,18 @@
 
 const Field = require("../models/fields");
 
+module.exports.getFields = (req, res, next) => {
+  console.log("called getFields")
+  Field.getallfields()
+  .then((fields) => {
+    // console.log("gotback from field model", fields)
+    console.log("gotback from field model")
+    return res.json(fields)
+  })
+  .catch((err) => { return next(err)
+  })
+}
+
 module.exports.seedfield = (req, res, next) => {
   console.log("dog")
   console.log("making a field with", req.body)

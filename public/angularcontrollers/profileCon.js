@@ -1,11 +1,23 @@
 app.controller("profileCon", function($scope, authFactory, profileFactory){
   // $scope.user ={username:"", password:""}
+const popPage = () => {
+  profileFactory.getFields()
+    .then((fields) => {
+      console.log("got data back to the frontend controller", fields)
+      $scope.fields = fields
+      $scope.$apply()
+    })
+}
+
+popPage()
+
   $scope.Logout = () => {
     console.log("you hit the logout")
     authFactory.logoutFarmer()
     console.log("got back to logout frontend")
     $scope.msg="You have logged out"
-  },
+  }
+
   $scope.fieldMaker = () => {
     console.log("You're trying to make a new field")
     profileFactory.add($scope.newfield)
