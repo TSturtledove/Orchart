@@ -1,10 +1,12 @@
-app.controller("profileCon", function($scope, authFactory, profileFactory){
+app.controller("fieldsCon", function($scope, $routeParams, authFactory, fieldFactory){
   // $scope.user ={username:"", password:""}
+const fieldId = $routeParams.fieldId
+
 const popPage = () => {
-  profileFactory.getFields()
-    .then((fields) => {
-      console.log("got data back to the frontend controller", fields)
-      $scope.fields = fields
+  fieldFactory.getField($routeParams.fieldId)
+    .then((field) => {
+      console.log("got data back to the frontend controller", field)
+      $scope.field = field
       $scope.$apply()
     })
 }
