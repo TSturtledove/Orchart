@@ -1,3 +1,92 @@
 "use strict";
 
-const treatments = require("../models/treatments");
+const Treatment = require("../models/treatments");
+
+const PlantTreatment = require("../models/plantTreatments");
+
+const Field = require("../models/fields");
+
+const Plant = require("../models/plants");
+
+module.exports.getTreatments = ({params: {id}}, res, next) => {
+  console.log("called getallTreatments")
+  Treatment.getalltreatments(id)
+  .then((treatments) => {
+    // console.log("gotback from field model", fields)
+    console.log("gotback from treatment model")
+    return res.json(treatments)
+  })
+  .catch((err) => { return next(err)
+  })
+}
+
+module.exports.getPlantTreatments = ({params: {id}}, res, next) => {
+  console.log("called getallPlantTreatments")
+  PlantTreatment.getallPlantTreatments(id)
+  .then((planttreatments) => {
+    // console.log("gotback from field model", fields)
+    console.log("gotback from treatment model")
+    return res.json(planttreatments)
+  })
+  .catch((err) => { return next(err)
+  })
+}
+
+
+module.exports.maketreatment = (req, res, next) => {
+  // console.log("dog")
+  console.log("making a treatment with", req.body)
+
+  // module.exports.getField = ({params: {id}}, res, next) => {
+    // console.log("called getField")
+    // Field.getfield(id)
+    // .then((field) => {
+      let date = req.body.date
+      let treatment = req.body.name
+      let field_id = req.body.id
+    //
+      console.log("date", date)
+      console.log("name", treatment)
+      console.log("field id", field_id)
+    //   console.log("gotback from field model")
+      return Treatment.forge({treatment, field_id, date})
+      .save()
+      .then( ()=> {
+        console.log("end of treatment making for field")
+        return res.json({})
+      })
+    // })
+    .catch((err) => {
+      console.log("error on forge treatment", err)
+      return next(err)
+    })
+  }
+
+  module.exports.makePlantTreatment = (req, res, next) => {
+    // console.log("dog")
+    console.log("making a plant treatment with", req.body)
+
+    // module.exports.getField = ({params: {id}}, res, next) => {
+      // console.log("called getField")
+      // Field.getfield(id)
+      // .then((field) => {
+        let date = req.body.date
+        let treatment = req.body.name
+        let plant_id = req.body.id
+      //
+        console.log("date", date)
+        console.log("name", treatment)
+        console.log("plant id", plant_id)
+      //   console.log("gotback from field model")
+        return PlantTreatment.forge({treatment, plant_id, date})
+        .save()
+        .then( ()=> {
+          console.log("end of treatment making for plant")
+          return res.json({})
+        })
+      // })
+      .catch((err) => {
+        console.log("error on forge plant treatment", err)
+        return next(err)
+      })
+    }

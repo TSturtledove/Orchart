@@ -14,7 +14,7 @@ const Farmer = bookshelf.Model.extend({
 }, {
   findOneByUsername: function(name) {
     console.log("name passed to findone", name)
-    return this.forge({name})
+    return this.where("name",name)
     .fetch()
     .then( (user) => {
       console.log("got user", user);

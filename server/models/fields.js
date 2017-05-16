@@ -23,7 +23,35 @@ const Field = bookshelf.Model.extend({
       console.log("did not find user", err);
       return(null)
     });
+  },
+  getfield: function(id) {
+    console.log("fired getfield")
+    return this.forge({id})
+    .fetch()
+    .then((row) => {
+      console.log("getallfields model", row)
+      return row
+    })
+    .catch((err) => {
+      console.log("error getting field")
+      return err
+    })
+  },
+
+  getallfields: function() {
+    console.log("fired getallfields")
+    return this.forge()
+    .fetchAll({})
+    .then((rows) => {
+      // console.log("getallfields model", rows)
+      return rows
+    })
+    .catch((err) => {
+      console.log("error getting fields")
+      return err
+    })
   }
+
 });
 
 module.exports = Field;

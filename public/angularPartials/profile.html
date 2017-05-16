@@ -2,9 +2,9 @@
   <a href="/#!/login"><input type="button" value="Login"></a>
   <a href="/#!/login"><input type="button" value="Logout" ng-click="Logout()"></a>
   <a href="/#!/"><input type="button" value="Home"></a>
-  <a href=""><input type="button" value="Fields"></a>
-  <a href=""><input type="button" value="Plants"></a>
-  <a href=""><input type="button" value="Treatments"></a>
+  <!-- <a href=""><input type="button" value="Fields"></a> -->
+  <!-- <a href=""><input type="button" value="Plants"></a> -->
+  <!-- <a href=""><input type="button" value="Treatments"></a> -->
 </div>
 
 <h3>Profile</h3>
@@ -14,8 +14,12 @@
   <div>
     <label for="fieldname">Name</label>
     <input type="text" ng-model="newfield.name" placeholder="Fieldname" name="fieldname">
+    <label for="date">Date</label>
     <input type="text" ng-model="newfield.date" placeholder="Date" name="date">
     <input type="button" value="Make Field" ng-click="fieldMaker()">
 
   </div>
 </fieldset>
+<div ng-repeat="field in fields">
+  <a href="/#!/fields/{{field.id}}"><input type="button" value="{{field.name}}"></a>
+</div>

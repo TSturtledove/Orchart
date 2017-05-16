@@ -15,7 +15,12 @@ app.controller("homeCon", function($scope, authFactory) {
     })
   }
 
-
+  $scope.Logout = () => {
+    console.log("you hit the logout")
+    authFactory.logoutFarmer()
+    console.log("got back to logout frontend")
+    $scope.msg="You have logged out"
+  }
 
 
 })

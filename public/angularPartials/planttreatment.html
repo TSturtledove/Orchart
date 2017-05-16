@@ -1,15 +1,17 @@
 <div>
+  <!-- <a href="/#!/login"><input type="button" value="Login"></a> -->
   <a href="/#!/login"><input type="button" value="Logout" ng-click="Logout()"></a>
-  <a href="/#!/profile"><input type="button" value="Profile"></a>
+  <a href="/#!/profile"><input type="button" value="Profile" ng-click="Profile()"></a>
+  <!-- <a href=""><input type="button" value="Fields"></a> -->
   <a href="/#!/plants/{{field.id}}"><input type="button" value="Plants"></a>
   <!-- <a href=""><input type="button" value="Treatments"></a> -->
 </div>
 
-<h3>Field</h3>
-<h3>{{msg}}</h3>
 
-<h4>Add a treatment to this field</h4>
-{{field.name}}
+<h3>Plant</h3>
+<h3>{{msg}}</h3>
+<h4>Add a treatment to this plant in field {{field.name}}</h4>
+<h4>{{plant.name}}</h4>
 <fieldset>
   <div>
     <label for="treatmentname">Name</label>
@@ -19,7 +21,12 @@
     <input type="button" value="Add Treatment" ng-click="makeTreatment()">
   </div>
 </fieldset>
+<h4>Treatments specific to this plant</h4>
+<div ng-repeat="treatment_plant in treatment_plants">
+  <a href="/#!/treatments/{{treatment_plant.id}}"><input type="button" value="{{treatment_plant.treatment}}"></a>
+</div>
 
+<h4>Treatments for the field this plant is in</h4>
 <div ng-repeat="treatment_field in treatment_fields">
   <a href="/#!/treatments/{{treatment_field.id}}"><input type="button" value="{{treatment_field.treatment}}"></a>
 </div>
