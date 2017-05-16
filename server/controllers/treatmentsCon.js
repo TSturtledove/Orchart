@@ -17,41 +17,31 @@ module.exports.getTreatments = ({params: {id}}, res, next) => {
 }
 
 
-module.exports.maketreatment = ({params: {id}}, res, next) => {
+module.exports.maketreatment = (req, res, next) => {
   // console.log("dog")
-  console.log("making a field with", req.body)
-  console.log("user id", req.user.id)
+  console.log("making a treatment with", req.body)
 
   // module.exports.getField = ({params: {id}}, res, next) => {
-    console.log("called getField")
-    Field.getfield(id)
-    .then((field) => {
-      // console.log("gotback from field model", fields)
-      console.log("gotback from field model")
-      return res.json(field)
-    })
-    .catch((err) => { return next(err)
+    // console.log("called getField")
+    // Field.getfield(id)
+    // .then((field) => {
+      let date = req.body.date
+      let treatment = req.body.name
+      let field_id = req.body.id
+    //
+      console.log("date", date)
+      console.log("name", treatment)
+      console.log("field id", field_id)
+    //   console.log("gotback from field model")
+      return Treatment.forge({treatment, field_id, date})
+      .save()
+      .then( ()=> {
+        console.log("end of treatment making for field")
+        return res.json({})
+      })
+    // })
+    .catch((err) => {
+      console.log("error on forge treatment", err)
+      return next(err)
     })
   }
-
-
-  // Field.findOneByFieldname(req.body.name)
-  // .then( (field) => {
-    console.log("findOneByFieldname ran")
-    // if (field) return res.status(400).json(field);//err if name was used already
-    let name = req.body.name
-    let date = req.body.date
-    let user_id = req.user.id
-    console.log("checking body for field name", name)
-    return Field.forge({name, user_id, date})
-    .save()
-    .then( ()=> {
-      console.log("end of field making")
-      return res.json({})
-    })
-    .catch( (err)=> {
-      res.status(400)
-      console.log("error on finding field", err)
-    })
-  })
-}

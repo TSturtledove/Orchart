@@ -21,19 +21,22 @@ popPage()
   }
 
   $scope.makeTreatment = () => {
-    console.log("You're trying to make a new field")
-    profileFactory.add($scope.newtreatment)
-    .then((field) => {
+    let id = $routeParams.fieldId
+    let name = $scope.newtreatment.name
+    let date = $scope.newtreatment.date
+    console.log("You're trying to make a new treatment")
+    fieldFactory.add({name, id, date})
+    .then((treatment) => {
       popPage()
-      console.log("You made a field", field)
-      $scope.msg="You made a new field"
+      console.log("You made a treatment", treatment)
+      $scope.msg="You made a new treatment"
       $scope.$apply()
     }).catch( (err) => {
-      console.log("There was an error making field", err)
-      $scope.msg="There was an error in making the field, please try again"
+      console.log("There was an error making the treatment", err)
+      $scope.msg="There was an error in making the treatment, please try again"
       $scope.$apply()
     })
-    $scope.newfield = {}
+    $scope.newtreatment = {}
   }
 
 

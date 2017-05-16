@@ -18,4 +18,6 @@ const Treatment = bookshelf.Model.extend({
       return err
     })
   }
-})
+});
+
+module.exports = Treatment;
