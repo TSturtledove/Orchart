@@ -43,6 +43,16 @@ app.factory("fieldFactory", function($http) {
           resolve(data.data)
         })
       })
+    },
+
+    getTreatments: function(id) {
+      return new Promise((resolve, reject) => {
+        $http.get(`http://localhost:3000/api/v1/treatments/${id}`)
+        .then((data) => {
+          console.log("got the data from backend for treatments", data)
+          resolve(data.data)
+        })
+      })
     }
 
 

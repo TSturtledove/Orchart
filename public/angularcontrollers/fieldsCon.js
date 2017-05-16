@@ -2,16 +2,28 @@ app.controller("fieldsCon", function($scope, $routeParams, authFactory, fieldFac
   // $scope.user ={username:"", password:""}
 const fieldId = $routeParams.fieldId
 
-const popPage = () => {
+// const popPage
+let p1 = new Promise((resolve, reject) => {
   fieldFactory.getField($routeParams.fieldId)
     .then((field) => {
       console.log("got data back to the frontend controller", field)
       $scope.field = field
       $scope.$apply()
     })
-}
+  })
 
-popPage()
+let p2 = new Promise((resolve, reject) => {
+    fieldFactory.getTreatments($routeParams.fieldId)
+    .then((treatments) => {
+      console.log("got the treatments back to the frontend controller", treatments)
+      $scope.treatment_fields = treatments
+      $scope.$apply()
+    })
+  })
+Promise.all([p1,p2]).then(values => {
+  console.log("here are the values")
+})
+// popPage()
 
   $scope.Logout = () => {
     console.log("you hit the logout")

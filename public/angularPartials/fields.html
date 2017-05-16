@@ -17,3 +17,7 @@
     <input type="button" value="Add Treatment" ng-click="makeTreatment()">
   </div>
 </fieldset>
+
+<div ng-repeat="treatment_field in treatment_fields">
+  <a href="/#!/treatments/{{treatment_field.id}}"><input type="button" value="{{treatment_field.treatment}}"></a>
+</div>

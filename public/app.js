@@ -44,6 +44,16 @@ app.config(["$routeProvider", function($routeProvider) {
     templateUrl: "angularPartials/fields.html",
     controller: "fieldsCon"
   //   // resolve:
+// }).when("/plants", {
+//   templateUrl: "angularPartials/plants.html",
+//   controller: ""
+// }).when("/plants", {
+//   templateUrl: "angularPartials/plants.html",
+//   controller: ""
+// }).when("/plants", {
+//   templateUrl: "angularPartials/plants.html",
+//   controller: ""
+
   // }).when("/plants", {
   //   templateUrl: "angularPartials/plants.html",
   //   controller: ""

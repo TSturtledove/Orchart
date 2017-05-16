@@ -3,7 +3,7 @@
 const {Router} = require("express");
 const router = Router();
 
-const {maketreatment} = require("../controllers/treatmentsCon")
+const {maketreatment, getTreatments} = require("../controllers/treatmentsCon")
 const {seedfield, getFields, getField} = require("../controllers/fieldsCon")
 const {authcheck, create, destroy, gatecheck} = require("../controllers/authCon")
 
@@ -28,6 +28,7 @@ router.get("/fields", getFields)
 router.post("/field/new", seedfield)
 router.get("/field/:id", getField)
 router.post("/field/newtreatment", maketreatment)
+router.get("/treatments/:id", getTreatments)
 //the way this is currently setup each of these links are referenceing "Route"
 //pages that will have the "get", "post", "delete", etc. commands
 //for reference it is like the concat-dating project
