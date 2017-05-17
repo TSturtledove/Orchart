@@ -15,6 +15,7 @@ app.factory("fieldFactory", function($http) {
 
 
     getField: function(id) {
+      // console.log("passed", id)
       return new Promise((resolve, reject) => {
         $http.get(`http://localhost:3000/api/v1/field/${id}`)
         .then((data) => {

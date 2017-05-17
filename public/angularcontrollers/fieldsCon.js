@@ -3,6 +3,7 @@ app.controller("fieldsCon", function($scope, $routeParams, authFactory, fieldFac
 const fieldId = $routeParams.fieldId
 
 const popPage = ()=> {
+  // console.log("field id", $routeParams.fieldId)
 fieldFactory.getField($routeParams.fieldId)
   .then((field) => {
     console.log("got data back to the frontend controller", field)

@@ -8,9 +8,10 @@ const Treatment = bookshelf.Model.extend({
   getalltreatments: function(id) {
     console.log("fired getalltreatments")
     return this.forge()
+    .where({field_id: id})
     .fetchAll({})
     .then((rows) => {
-      console.log("getalltreatments model", rows)
+      console.log("getalltreatments model")
       return rows
     })
     .catch((err) => {

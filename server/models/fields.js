@@ -16,7 +16,7 @@ const Field = bookshelf.Model.extend({
     return this.where("name", name)
     .fetch()
     .then( (field) => {
-      console.log("got field", field);
+      console.log("got field");
       return field;
     })
     .catch( (err)=> {
@@ -25,11 +25,12 @@ const Field = bookshelf.Model.extend({
     });
   },
   getfield: function(id) {
-    console.log("fired getfield")
-    return this.forge({id})
+    console.log("fired getfield", id)
+    return this.forge()
+    .where({id: id})
     .fetch()
     .then((row) => {
-      console.log("getallfields model", row)
+      console.log("getfield model")
       return row
     })
     .catch((err) => {
@@ -38,9 +39,10 @@ const Field = bookshelf.Model.extend({
     })
   },
 
-  getallfields: function() {
+  getallfields: function(id) {
     console.log("fired getallfields")
     return this.forge()
+    .where({user_id: id})
     .fetchAll({})
     .then((rows) => {
       // console.log("getallfields model", rows)

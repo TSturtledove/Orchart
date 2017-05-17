@@ -4,7 +4,8 @@ const Field = require("../models/fields");
 
 module.exports.getFields = (req, res, next) => {
   console.log("called getFields")
-  Field.getallfields()
+  let user_id = req.user.id
+  Field.getallfields(user_id)
   .then((fields) => {
     // console.log("gotback from field model", fields)
     console.log("gotback from field model")
@@ -15,7 +16,7 @@ module.exports.getFields = (req, res, next) => {
 }
 
 module.exports.getField = ({params: {id}}, res, next) => {
-  console.log("called getField")
+  // console.log("called getField", {params: {id}})
   Field.getfield(id)
   .then((field) => {
     // console.log("gotback from field model", fields)

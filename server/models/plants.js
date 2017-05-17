@@ -11,7 +11,7 @@ const Plant = bookshelf.Model.extend({
     return this.forge({id})
     .fetch()
     .then((row) => {
-      console.log("getOnePlant model", row)
+      console.log("getOnePlant model")
       return row
     })
     .catch((err) => {
@@ -23,9 +23,10 @@ const Plant = bookshelf.Model.extend({
   getallplants: function(id) {
     console.log("fired getallplants")
     return this.forge()
+    .where({field_id: id})
     .fetchAll({})
     .then((rows) => {
-      console.log("getallplants model", rows)
+      console.log("getallplants model")
       return rows
     })
     .catch((err) => {

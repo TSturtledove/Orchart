@@ -8,6 +8,7 @@ const PlantTreatment = bookshelf.Model.extend({
   getallPlantTreatments: function(id) {
     console.log("fired getallPlantTreatments")
     return this.forge()
+    .where({plant_id: id})
     .fetchAll({})
     .then((rows) => {
       // console.log("getallPlantTreatments model", rows)
