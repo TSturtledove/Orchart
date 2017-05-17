@@ -99,7 +99,7 @@ module.exports.maketreatment = (req, res, next) => {
       Treatment.forge({id: num})
       .destroy()
       .then( (Treatment) => {
-          console.log("deleted field")
+          console.log("deleted field treatment")
         res.status(200).json(Treatment)
       })
       .catch( (err) => {

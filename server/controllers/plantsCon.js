@@ -56,3 +56,34 @@ module.exports.makePlant = (req, res, next) => {
       return next(err)
     })
   }
+
+  module.exports.removePlant = ( {params: {num}}, res, next) => {
+    console.log("is this the id", num)
+    // right here decide if how you will get rid of the treatments, plants, and plant treatments
+    // that are attached to the field in question
+    Plant.forge({id: num})
+    .destroy()
+    .then( (plant) => {
+        console.log("deleted plant")
+      res.status(200).json(plant)
+    })
+    .catch( (err) => {
+      console.log('deleteshow err', err)
+      return next(err)
+    })
+  }
+
+  module.exports.editPlant = ( req, res, next) => {
+    const animal =  req.body
+    const id = req.params.id
+    console.log("anmial", animal)
+    console.log("id", id)
+    Animals.editThisAnimal(id, animal)
+    .then( (res) => {
+      res.status(200).json(animal)
+      .catch( (err) => {
+        console.log("edit error", err)
+        return next(err)
+      })
+    })
+  }

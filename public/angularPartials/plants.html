@@ -21,5 +21,18 @@
 </fieldset>
 
 <div ng-repeat="plant in plants">
-  <a href="/#!/plants/{{field.id}}/{{plant.id}}"><input type="button" value="{{plant.name}}"></a>
+  <fieldset>
+    <h4>Plant Name: {{plant.name}}</h4>
+    <p>Date plant was added: {{plant.date}}</p>
+    <a href="/#!/plants/{{field.id}}/{{plant.id}}"><input type="button" value="See treatments for this plant"></a>
+    <input type="button" value="remove" ng-click="remove(plant.id)">
+    <input type="button" value="edit" ng-click="editing = !editing">
+    <div ng-if="editing">
+      <label for="newName">Name</label>
+      <input type="text" ng-model="editplant.name" placeholder="Plant name" name="newName">
+      <label for="newDate">Date</label>
+      <input type="text" ng-model="editplant.date" placeholder="Date" name="newDate">
+      <input type="button" value="save" ng-click="save(plant.id, editplant)">
+    </div>
+  </fieldset>
 </div>

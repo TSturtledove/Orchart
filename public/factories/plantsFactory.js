@@ -54,9 +54,26 @@ app.factory("plantsFactory", function($http) {
           resolve(data.data)
         })
       })
-    }
+    },
 
+        remove: function(num) {
+          return new Promise((resolve,reject) => {
+            $http.delete(`http://localhost:3000/api/v1/plantremoval/${num}`)
+              .then((data) => {
+                resolve()
+              })
+          })
+        },
 
+        update: (updateInfo) => {
+          return new Promise((resolve, reject) => {
+            $http.patch(`http://localhost:3000/api/v1/plantedit`, updateInfo)
+            .then((data) => {
+              resolve()
+            })
+            .catch((err) => console.log("err:", err))
+          })
+        }
 
   }
 })

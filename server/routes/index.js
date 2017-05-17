@@ -6,7 +6,7 @@ const router = Router();
 const {maketreatment, getTreatments, getPlantTreatments, makePlantTreatment, removeFieldTreatment, editFieldTreatment} = require("../controllers/treatmentsCon")
 const {seedfield, getFields, getField, removeField, editField} = require("../controllers/fieldsCon")
 const {authcheck, create, destroy, gatecheck} = require("../controllers/authCon")
-const {makePlant, getPlants, getOnePlant} = require("../controllers/plantsCon")
+const {makePlant, getPlants, getOnePlant, editPlant, removePlant} = require("../controllers/plantsCon")
 
 // routes to be used
 // router.use(require("./homeRoute"));
@@ -38,6 +38,8 @@ router.delete("/fieldremoval/:num", removeField)
 router.patch("/fieldedit", editField)
 router.delete("/fieldtreatmentremoval/:num", removeFieldTreatment)
 router.patch("/fieldtreatmentedit", editFieldTreatment)
+router.delete("/plantremoval/:num", removePlant)
+router.patch("/plantedit", editPlant)
 
 //the way this is currently setup each of these links are referenceing "Route"
 //pages that will have the "get", "post", "delete", etc. commands
