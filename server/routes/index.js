@@ -3,7 +3,7 @@
 const {Router} = require("express");
 const router = Router();
 
-const {maketreatment, getTreatments, getPlantTreatments, makePlantTreatment, removeFieldTreatment, editFieldTreatment} = require("../controllers/treatmentsCon")
+const {maketreatment, getTreatments, getPlantTreatments, makePlantTreatment, removeFieldTreatment, editFieldTreatment, removePlantTreatment, editPlantTreatment} = require("../controllers/treatmentsCon")
 const {seedfield, getFields, getField, removeField, editField} = require("../controllers/fieldsCon")
 const {authcheck, create, destroy, gatecheck} = require("../controllers/authCon")
 const {makePlant, getPlants, getOnePlant, editPlant, removePlant} = require("../controllers/plantsCon")
@@ -40,7 +40,8 @@ router.delete("/fieldtreatmentremoval/:num", removeFieldTreatment)
 router.patch("/fieldtreatmentedit", editFieldTreatment)
 router.delete("/plantremoval/:num", removePlant)
 router.patch("/plantedit", editPlant)
-
+router.delete("/planttreatmentremoval/:num", removePlantTreatment)
+router.patch("/planttreatmentedit", editPlantTreatment)
 //the way this is currently setup each of these links are referenceing "Route"
 //pages that will have the "get", "post", "delete", etc. commands
 //for reference it is like the concat-dating project
