@@ -58,6 +58,17 @@ const Field = bookshelf.Model.extend({
       console.log("error getting fields")
       return err
     })
+  },
+  editThisField: function({id, name, date}) {
+    return this.forge({ id, name, date})
+    .save()
+    .then( () => {
+      return { 'msg': 'Field updated'}
+    })
+    .catch ( (err) => {
+      console.log('err from edit field', err)
+      return  err
+    })
   }
 
 });

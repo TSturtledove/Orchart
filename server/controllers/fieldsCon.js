@@ -64,7 +64,7 @@ module.exports.removeField = ( {params: {num}}, res, next) => {
   .destroy()
   .then( (field) => {
       console.log("deleted field")
-    res.status(200).json(field)
+    return res.json(field)
   })
   .catch( (err) => {
     console.log('deleteshow err', err)
@@ -73,16 +73,16 @@ module.exports.removeField = ( {params: {num}}, res, next) => {
 }
 
 module.exports.editField = ( req, res, next) => {
-  const animal =  req.body
-  const id = req.params.id
-  console.log("anmial", animal)
-  console.log("id", id)
-  Animals.editThisAnimal(id, animal)
-  .then( (res) => {
-    res.status(200).json(animal)
+  const field =  req.body
+  // const id = req.params.id
+  console.log("field", field)
+  // console.log("id", id)
+  Field.editThisField(field)
+  .then( () => {
+    return res.json({})
+  })
     .catch( (err) => {
       console.log("edit error", err)
       return next(err)
-    })
   })
 }
