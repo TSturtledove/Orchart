@@ -90,3 +90,35 @@ module.exports.maketreatment = (req, res, next) => {
         return next(err)
       })
     }
+
+
+    module.exports.removeFieldTreatment = ( {params: {num}}, res, next) => {
+      console.log("is this the id", num)
+      // right here decide if how you will get rid of the treatments, plants, and plant treatments
+      // that are attached to the field in question
+      Treatment.forge({id: num})
+      .destroy()
+      .then( (Treatment) => {
+          console.log("deleted field")
+        res.status(200).json(Treatment)
+      })
+      .catch( (err) => {
+        console.log('deleteshow err', err)
+        return next(err)
+      })
+    }
+
+    module.exports.editFieldTreatment = ( req, res, next) => {
+      const animal =  req.body
+      const id = req.params.id
+      console.log("anmial", animal)
+      console.log("id", id)
+      Animals.editThisAnimal(id, animal)
+      .then( (res) => {
+        res.status(200).json(animal)
+        .catch( (err) => {
+          console.log("edit error", err)
+          return next(err)
+        })
+      })
+    }
