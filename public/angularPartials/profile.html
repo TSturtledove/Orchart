@@ -21,5 +21,17 @@
   </div>
 </fieldset>
 <div ng-repeat="field in fields">
-  <a href="/#!/fields/{{field.id}}"><input type="button" value="{{field.name}}"></a>
+  <h4>Field Name: {{field.name}}</h4>
+  <p>Date field was made: {{field.date}}</p>
+  <a href="/#!/fields/{{field.id}}"><input type="button" value="See treatments for this field"></a>
+  <input type="button" value="remove" ng-click="remove(field.id)">
+  <input type="button" value="edit" ng-click="editing = !editing">
+  <div ng-if="editing">
+    <label for="newName">Name</label>
+    <input type="text" ng-model="editfield.name" placeholder="Fieldname" name="newName">
+    <label for="newDate">Date</label>
+    <input type="text" ng-model="editfield.date" placeholder="Date" name="newDate">
+    <input type="button" value="save" ng-click="save()">
+  </div>
+
 </div>
