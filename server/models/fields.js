@@ -1,16 +1,22 @@
 "use strict";
 
 const {bookshelf} = require("../../db/database");
+
+const Treatment = require("../models/treatments");
+const Plant = require("../models/plants");
+
 // const {compare} = require("bcryptjs");
 
 const Field = bookshelf.Model.extend({
-  tableName: "fields"
-  // compareName: function (fieldnameStr) {
-    // console.log("password", passwordStr);
-    // console.log("user", this.attributes);
-    // return compare(fieldnameStr, this.attributes.name)
-  // }
+  tableName: "fields",
+  treatments: function() {
+    return this.hasMany(Treatment)
+  },
+  plants: function() {
+    return this.hasMany(Plant)
+  }
 }, {
+  dependents: ["treatments", "plants"],
   findOneByFieldname: function(name) {
     console.log("name passed to field finder", name)
     return this.where("name", name)

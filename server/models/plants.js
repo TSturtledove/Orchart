@@ -2,9 +2,15 @@
 
 const {bookshelf} = require("../../db/database");
 
+const PlantTreatment = require("../models/plantTreatments");
+
 const Plant = bookshelf.Model.extend({
-  tableName: "plants"
+  tableName: "plants",
+  treatments: function() {
+    return this.hasMany(PlantTreatment)
+  },
 }, {
+  dependents: ["treatments"],
 
   getOnePlant: function(id) {
     console.log("fired getOnePlant")

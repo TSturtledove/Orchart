@@ -12,18 +12,7 @@ app.factory("profileFactory", function($http) {
         })
       })
     },
-    // getFarmer: function(user) {
-    //   console.log("user", user)
-    //   return new Promise((resolve, reject) => {
-    //     $http.post(`http://localhost:3000/api/v1/authcheck`, user)
-    //     .then((user)=> {
-    //       console.log("factory user", user)
-    //       resolve(user)
-    //     }).catch( (err)=> {
-    //       reject(err)
-    //     })
-    //   })
-    // },
+
     logoutFarmer: function() {
       return new Promise((resolve, reject) => {
         $http.post(`http://localhost:3000/api/v1/authcheck/logout`)
@@ -43,9 +32,26 @@ app.factory("profileFactory", function($http) {
           resolve(data.data)
         })
       })
-    }
+    },
 
+        remove: function(num) {
+          return new Promise((resolve,reject) => {
+            $http.delete(`http://localhost:3000/api/v1/fieldremoval/${num}`)
+              .then((data) => {
+                resolve()
+              })
+          })
+        },
 
+        update: (updateInfo) => {
+          return new Promise((resolve, reject) => {
+            $http.patch(`http://localhost:3000/api/v1/fieldedit`, updateInfo)
+            .then((data) => {
+              resolve()
+            })
+            .catch((err) => console.log("err:", err))
+          })
+        }
 
   }
 })

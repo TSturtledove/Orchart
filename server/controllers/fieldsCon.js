@@ -52,3 +52,37 @@ module.exports.seedfield = (req, res, next) => {
     })
   })
 }
+
+
+// removeField, editField
+
+module.exports.removeField = ( {params: {num}}, res, next) => {
+  console.log("is this the id", num)
+  // right here decide if how you will get rid of the treatments, plants, and plant treatments
+  // that are attached to the field in question
+  Field.forge({id: num})
+  .destroy()
+  .then( (field) => {
+      console.log("deleted field")
+    res.status(200).json(field)
+  })
+  .catch( (err) => {
+    console.log('deleteshow err', err)
+    return next(err)
+  })
+}
+
+module.exports.editField = ( req, res, next) => {
+  const animal =  req.body
+  const id = req.params.id
+  console.log("anmial", animal)
+  console.log("id", id)
+  Animals.editThisAnimal(id, animal)
+  .then( (res) => {
+    res.status(200).json(animal)
+    .catch( (err) => {
+      console.log("edit error", err)
+      return next(err)
+    })
+  })
+}
