@@ -86,6 +86,29 @@ popPage()
     $scope.newtreatment = {}
   }
 
+  $scope.remove = (id) => {
+    console.log("id", id)
+    plantsFactory.removePT(id)
+    .then(() => {
+      popPage()
+    })
+  }
+
+  $scope.save = (id, editplanttreatment) => {
+    console.log("save", id)
+    console.log("save", editplanttreatment)
+    let treatment = editplanttreatment.name
+    let date = editplanttreatment.date
+    let planttreatment = {id, treatment, date}
+    console.log("field info", planttreatment)
+    plantsFactory.updatePT(planttreatment)
+    .then(() => {
+      console.log("updated!!")
+      $scope.editing = false;
+      popPage()
+    })
+    $scope.editfield = {}
+  }
 
 
 })

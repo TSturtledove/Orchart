@@ -1,25 +1,39 @@
 <div>
-  <a href="/#!/login"><input type="button" value="Logout" ng-click="Logout()"></a>
-  <a href="/#!/profile"><input type="button" value="Profile"></a>
-  <a href="/#!/plants/{{field.id}}"><input type="button" value="Plants"></a>
+  <a href="/#!/"><input class="buttonstyle" type="button" value="Home"></a>
+  <a href="/#!/login"><input class="buttonstyle" type="button" value="Logout" ng-click="Logout()"></a>
+  <a href="/#!/profile"><input class="buttonstyle" type="button" value="Profile"></a>
+  <a href="/#!/plants/{{field.id}}"><input class="buttonstyle" type="button" value="Plants"></a>
   <!-- <a href=""><input type="button" value="Treatments"></a> -->
 </div>
 
-<h3>Field</h3>
+<h3>Fields</h3>
 <h3>{{msg}}</h3>
 
 <h4>Add a treatment to this field</h4>
 {{field.name}}
-<fieldset>
+<fieldset class="fieldstyle">
   <div>
     <label for="treatmentname">Name</label>
     <input type="text" ng-model="newtreatment.name" placeholder="Treatment" name="treatmentname">
     <label for="date">Date</label>
     <input type="text" ng-model="newtreatment.date" placeholder="Date" name="date">
-    <input type="button" value="Add Treatment" ng-click="makeTreatment()">
+    <input class="buttonstyle" type="button" value="Add Treatment" ng-click="makeTreatment()">
   </div>
 </fieldset>
 
-<div ng-repeat="treatment_field in treatment_fields">
-  <a href="/#!/treatments/{{treatment_field.id}}"><input type="button" value="{{treatment_field.treatment}}"></a>
+<div class="centertext" ng-repeat="treatment_field in treatment_fields">
+  <fieldset class="fieldstyle">
+    <h4>Treatment Name: {{treatment_field.treatment}}</h4>
+    <p>Date treament was given: {{treatment_field.date}}</p>
+    <!-- <a href="/#!/treatments/{{treatment_field.id}}"><input type="button" value="{{treatment_field.treatment}}"></a> -->
+    <input class="buttonstyle" type="button" value="remove" ng-click="remove(treatment_field.id)">
+    <input class="buttonstyle" type="button" value="edit" ng-click="editing = !editing">
+    <div ng-if="editing">
+      <label for="newName">Name</label>
+      <input type="text" ng-model="editfieldtreatment.name" placeholder="Fieldname" name="newName">
+      <label for="newDate">Date</label>
+      <input type="text" ng-model="editfieldtreatment.date" placeholder="Date" name="newDate">
+      <input class="buttonstyle" type="button" value="save" ng-click="save(treatment_field.id, editfieldtreatment)">
+    </div>
+  </fieldset>
 </div>

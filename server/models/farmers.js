@@ -13,11 +13,11 @@ const Farmer = bookshelf.Model.extend({
   }
 }, {
   findOneByUsername: function(name) {
-    console.log("name passed to findone", name)
+    // console.log("name passed to findone", name)
     return this.where("name",name)
     .fetch()
     .then( (user) => {
-      console.log("got user", user);
+      // console.log("got user", user);
       return user;
     })
     .catch( (err)=> {

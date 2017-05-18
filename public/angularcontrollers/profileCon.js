@@ -35,5 +35,29 @@ popPage()
   }
 
 
+  $scope.remove = (id) => {
+    console.log("id", id)
+    profileFactory.remove(id)
+    .then(() => {
+      popPage()
+    })
+  }
+
+  $scope.save = (id, editfield) => {
+    // console.log("save", id)
+    // console.log("save", editfield)
+    let name = editfield.name
+    let date = editfield.date
+    let field = {id, name, date}
+    console.log("field info", field)
+    profileFactory.update(field)
+    .then(() => {
+      console.log("updated!!")
+      $scope.editing = false;
+      popPage()
+    })
+    $scope.editfield = {}
+  }
+
 
 })

@@ -1,22 +1,28 @@
 "use strict";
 
 const {bookshelf} = require("../../db/database");
+
+const Treatment = require("../models/treatments");
+const Plant = require("../models/plants");
+
 // const {compare} = require("bcryptjs");
 
 const Field = bookshelf.Model.extend({
-  tableName: "fields"
-  // compareName: function (fieldnameStr) {
-    // console.log("password", passwordStr);
-    // console.log("user", this.attributes);
-    // return compare(fieldnameStr, this.attributes.name)
-  // }
+  tableName: "fields",
+  treatments: function() {
+    return this.hasMany(Treatment)
+  },
+  plants: function() {
+    return this.hasMany(Plant)
+  }
 }, {
+  dependents: ["treatments", "plants"],
   findOneByFieldname: function(name) {
-    console.log("name passed to field finder", name)
+    // console.log("name passed to field finder", name)
     return this.where("name", name)
     .fetch()
     .then( (field) => {
-      console.log("got field", field);
+      console.log("got field");
       return field;
     })
     .catch( (err)=> {
@@ -25,11 +31,12 @@ const Field = bookshelf.Model.extend({
     });
   },
   getfield: function(id) {
-    console.log("fired getfield")
-    return this.forge({id})
+    // console.log("fired getfield", id)
+    return this.forge()
+    .where({id: id})
     .fetch()
     .then((row) => {
-      console.log("getallfields model", row)
+      console.log("getfield model")
       return row
     })
     .catch((err) => {
@@ -38,9 +45,10 @@ const Field = bookshelf.Model.extend({
     })
   },
 
-  getallfields: function() {
-    console.log("fired getallfields")
+  getallfields: function(id) {
+    // console.log("fired getallfields")
     return this.forge()
+    .where({user_id: id})
     .fetchAll({})
     .then((rows) => {
       // console.log("getallfields model", rows)
@@ -49,6 +57,17 @@ const Field = bookshelf.Model.extend({
     .catch((err) => {
       console.log("error getting fields")
       return err
+    })
+  },
+  editThisField: function({id, name, date}) {
+    return this.forge({ id, name, date})
+    .save()
+    .then( () => {
+      return { 'msg': 'Field updated'}
+    })
+    .catch ( (err) => {
+      console.log('err from edit field', err)
+      return  err
     })
   }
 

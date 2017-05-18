@@ -15,6 +15,7 @@ app.factory("fieldFactory", function($http) {
 
 
     getField: function(id) {
+      // console.log("passed", id)
       return new Promise((resolve, reject) => {
         $http.get(`http://localhost:3000/api/v1/field/${id}`)
         .then((data) => {
@@ -32,9 +33,26 @@ app.factory("fieldFactory", function($http) {
           resolve(data.data)
         })
       })
-    }
+    },
 
+        remove: function(num) {
+          return new Promise((resolve,reject) => {
+            $http.delete(`http://localhost:3000/api/v1/fieldtreatmentremoval/${num}`)
+              .then((data) => {
+                resolve()
+              })
+          })
+        },
 
+        update: (updateInfo) => {
+          return new Promise((resolve, reject) => {
+            $http.patch(`http://localhost:3000/api/v1/fieldtreatmentedit`, updateInfo)
+            .then((data) => {
+              resolve()
+            })
+            .catch((err) => console.log("err:", err))
+          })
+        }
 
   }
 })

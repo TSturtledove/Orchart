@@ -3,10 +3,10 @@
 const {Router} = require("express");
 const router = Router();
 
-const {maketreatment, getTreatments, getPlantTreatments, makePlantTreatment} = require("../controllers/treatmentsCon")
-const {seedfield, getFields, getField} = require("../controllers/fieldsCon")
+const {maketreatment, getTreatments, getPlantTreatments, makePlantTreatment, removeFieldTreatment, editFieldTreatment, removePlantTreatment, editPlantTreatment} = require("../controllers/treatmentsCon")
+const {seedfield, getFields, getField, removeField, editField} = require("../controllers/fieldsCon")
 const {authcheck, create, destroy, gatecheck} = require("../controllers/authCon")
-const {makePlant, getPlants, getOnePlant} = require("../controllers/plantsCon")
+const {makePlant, getPlants, getOnePlant, editPlant, removePlant} = require("../controllers/plantsCon")
 
 // routes to be used
 // router.use(require("./homeRoute"));
@@ -15,7 +15,6 @@ router.post("/authcheck", authcheck);
 router.post("/authcheck/new", create);
 router.post("/authcheck/logout", destroy);
 router.get("/gatecheck", gatecheck);
-
 
 // router.use( (req, res, next) => {
 //   if (req.isAuthenticated()) {
@@ -35,7 +34,14 @@ router.get("/plants/:id", getPlants)
 router.get("/oneplant/:id", getOnePlant)
 router.get("/plants/treatments/:id", getPlantTreatments)
 router.post("/plants/newplanttreatment", makePlantTreatment)
-
+router.delete("/fieldremoval/:num", removeField)
+router.patch("/fieldedit", editField)
+router.delete("/fieldtreatmentremoval/:num", removeFieldTreatment)
+router.patch("/fieldtreatmentedit", editFieldTreatment)
+router.delete("/plantremoval/:num", removePlant)
+router.patch("/plantedit", editPlant)
+router.delete("/planttreatmentremoval/:num", removePlantTreatment)
+router.patch("/planttreatmentedit", editPlantTreatment)
 //the way this is currently setup each of these links are referenceing "Route"
 //pages that will have the "get", "post", "delete", etc. commands
 //for reference it is like the concat-dating project

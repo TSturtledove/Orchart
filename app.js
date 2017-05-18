@@ -41,9 +41,12 @@ app.use( (req, res, next) => {
   next()
 })
 
+// app.use( (req, res, next) => {
+//   console.log("session?", req.session)
+//   next()
+})
 app.use(express.static("public"))
 app.use("/api/v1/", routes);
-
 
 //the catch for the 404 error
 app.use(function(req, res, next) {
