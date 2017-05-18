@@ -7,7 +7,7 @@ const Farmer = require("../models/farmers")
 module.exports.authcheck = (req, res, next) =>{
   // console.log("req", req.body)
   passport.authenticate("local", (err, user, msg) => {
-    console.log("goat there", msg)
+    // console.log("goat there", msg)
     if(err) return next(err)
     if(!user) return res.status(400).json(user);
 
@@ -22,14 +22,14 @@ module.exports.authcheck = (req, res, next) =>{
 }
 
 module.exports.create = (req, res, next) => {
-  console.log(req.body)
+  // console.log(req.body)
   if (req.body.password === req.body.confirmation) {
     Farmer.findOneByUsername(req.body.name)
     .then( (user) => {
-      console.log("then after findOneByUsername")
+      // console.log("then after findOneByUsername")
       if (user) return res.status(400).json(user);//err if name was already used
       let {name, password} = req.body
-      console.log("checking body", {name, password})
+      // console.log("checking body", {name, password})
       return Farmer.forge({name, password})
       .save()
       .then( ()=> {
@@ -67,7 +67,7 @@ module.exports.create = (req, res, next) => {
 }
 
 module.exports.destroy = (req, res) => {
-  console.log("going to logout", req.user.name)
+  // console.log("going to logout", req.user.name)
   req.logout()
   return res.json({})
   console.log("logged out")

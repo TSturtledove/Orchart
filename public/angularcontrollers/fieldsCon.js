@@ -79,7 +79,7 @@ popPage()
 
   $scope.save = (id, editfieldtreatment) => {
     console.log("save", id)
-    console.log("save", editfieldtreatment)
+    // console.log("save", editfieldtreatment)
     let treatment = editfieldtreatment.name
     let date = editfieldtreatment.date
     let treatmentinfo = {id, treatment, date}
@@ -92,7 +92,6 @@ popPage()
     })
     $scope.editfieldtreatment = {}
   }
-
 
 
 })

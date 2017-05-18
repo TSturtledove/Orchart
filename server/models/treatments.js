@@ -18,6 +18,17 @@ const Treatment = bookshelf.Model.extend({
       console.log("error getting treatments")
       return err
     })
+  },
+  editThisFieldTreatment: function({id, treatment, date}) {
+    return this.forge({ id, treatment, date})
+    .save()
+    .then( () => {
+      return { 'msg': 'Field Treatment updated'}
+    })
+    .catch ( (err) => {
+      console.log('err from edit field treatment', err)
+      return  err
+    })
   }
 
 

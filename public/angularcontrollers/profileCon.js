@@ -44,8 +44,8 @@ popPage()
   }
 
   $scope.save = (id, editfield) => {
-    console.log("save", id)
-    console.log("save", editfield)
+    // console.log("save", id)
+    // console.log("save", editfield)
     let name = editfield.name
     let date = editfield.date
     let field = {id, name, date}

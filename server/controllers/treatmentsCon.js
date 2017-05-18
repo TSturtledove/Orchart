@@ -109,18 +109,16 @@ module.exports.maketreatment = (req, res, next) => {
     }
 
     module.exports.editFieldTreatment = ( req, res, next) => {
-      const animal =  req.body
-      const id = req.params.id
-      console.log("anmial", animal)
-      console.log("id", id)
-      Animals.editThisAnimal(id, animal)
-      .then( (res) => {
-        res.status(200).json(animal)
+      const fieldTreatment =  req.body
+      console.log("fieldTreatment", fieldTreatment)
+      Treatment.editThisFieldTreatment(fieldTreatment)
+      .then( () => {
+        return res.json({})
+      })
         .catch( (err) => {
           console.log("edit error", err)
           return next(err)
         })
-      })
     }
 
 
@@ -141,16 +139,14 @@ module.exports.maketreatment = (req, res, next) => {
     }
 
     module.exports.editPlantTreatment = ( req, res, next) => {
-      const animal =  req.body
-      const id = req.params.id
-      console.log("anmial", animal)
-      console.log("id", id)
-      Animals.editThisAnimal(id, animal)
-      .then( (res) => {
-        res.status(200).json(animal)
+      const plantTreatment =  req.body
+      console.log("plantTreatment", plantTreatment)
+      PlantTreatment.editThisPlantTreatment(plantTreatment)
+      .then( () => {
+        return res.json({})
+      })
         .catch( (err) => {
           console.log("edit error", err)
           return next(err)
         })
-      })
     }
