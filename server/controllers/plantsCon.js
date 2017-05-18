@@ -66,16 +66,14 @@ module.exports.makePlant = (req, res, next) => {
   }
 
   module.exports.editPlant = ( req, res, next) => {
-    const animal =  req.body
-    const id = req.params.id
-    console.log("anmial", animal)
-    console.log("id", id)
-    Animals.editThisAnimal(id, animal)
-    .then( (res) => {
-      res.status(200).json(animal)
+    const plant =  req.body
+    // console.log("plant", plant)
+    Plant.editThisPlant(plant)
+    .then( () => {
+      return res.json({})
+    })
       .catch( (err) => {
         console.log("edit error", err)
         return next(err)
       })
-    })
   }

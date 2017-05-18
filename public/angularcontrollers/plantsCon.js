@@ -76,13 +76,13 @@ popPage()
   }
 
   $scope.save = (id, editplant) => {
-    console.log("save", id)
-    console.log("save", editplant)
+    // console.log("save", id)
+    // console.log("save", editplant)
     let name = editplant.name
     let date = editplant.date
     let plant = {id, name, date}
     console.log("field info", plant)
-    plantFactory.update(plant)
+    plantsFactory.update(plant)
     .then(() => {
       console.log("updated!!")
       $scope.editing = false;

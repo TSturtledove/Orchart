@@ -39,7 +39,20 @@ const Plant = bookshelf.Model.extend({
       console.log("error getting plants")
       return err
     })
+  },
+  editThisPlant: function({id, name, date}) {
+    return this.forge({ id, name, date})
+    .save()
+    .then( () => {
+      return { 'msg': 'Plant updated'}
+    })
+    .catch ( (err) => {
+      console.log('err from edit plant', err)
+      return  err
+    })
   }
+
+
 });
 
 module.exports = Plant;
