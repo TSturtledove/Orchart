@@ -6,7 +6,7 @@ const PlantTreatment = bookshelf.Model.extend({
   tableName: "treatment_plants"
 }, {
   getallPlantTreatments: function(id) {
-    console.log("fired getallPlantTreatments")
+    // console.log("fired getallPlantTreatments")
     return this.forge()
     .where({plant_id: id})
     .fetchAll({})

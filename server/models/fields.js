@@ -18,7 +18,7 @@ const Field = bookshelf.Model.extend({
 }, {
   dependents: ["treatments", "plants"],
   findOneByFieldname: function(name) {
-    console.log("name passed to field finder", name)
+    // console.log("name passed to field finder", name)
     return this.where("name", name)
     .fetch()
     .then( (field) => {
@@ -31,7 +31,7 @@ const Field = bookshelf.Model.extend({
     });
   },
   getfield: function(id) {
-    console.log("fired getfield", id)
+    // console.log("fired getfield", id)
     return this.forge()
     .where({id: id})
     .fetch()
@@ -46,7 +46,7 @@ const Field = bookshelf.Model.extend({
   },
 
   getallfields: function(id) {
-    console.log("fired getallfields")
+    // console.log("fired getallfields")
     return this.forge()
     .where({user_id: id})
     .fetchAll({})

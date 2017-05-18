@@ -11,6 +11,7 @@ const Farmer = require("../models/farmers")
 passport.serializeUser((user, done) => done(null, user.id));//user.id is created by the table.increments in the migration
 
 passport.deserializeUser( (id, done) => {
+  // console.log("deserialize called")
   knex('users').where({id}).first()//searches the users table for a matching "id" and stops when it fine one
   .then( (user) => { done(null, user) })
   .catch( (err) => { done(err, null) })
@@ -25,7 +26,7 @@ const localStrategy = new Strategy({
     Farmer.findOneByUsername(name)//calls the findOneByUsername fuction form userModel
     .then( (user) => {//the "user" here is a variable returned form the above search and is different from the "User" above
       if (user) {
-        console.log("hello")
+        // console.log("hello")
         return Promise.all([
           user,
           user.comparePass(passwordStr)//this is comparing the input password "passwordString" with the one stored on the database for the found user
@@ -38,11 +39,11 @@ const localStrategy = new Strategy({
           }
         })
       }
-    console.log("findOneByUsername then called")
+    // console.log("findOneByUsername then called")
     done(null, null, {msg: 'Username does not exist in system'})
   })
   .catch( (err)=> {
-    console.log("dog food", err)
+    console.log("Error in passport strategies", err)
   })
 })
 

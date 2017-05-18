@@ -1,7 +1,7 @@
 <div>
-  <a href="/#!/login"><input type="button" value="Login"></a>
-  <a href="/#!/login"><input type="button" value="Logout" ng-click="Logout()"></a>
-  <a href="/#!/"><input type="button" value="Home"></a>
+  <a href="/#!/"><input class="buttonstyle" type="button" value="Home"></a>
+  <a href="/#!/login"><input class="buttonstyle" type="button" value="Login"></a>
+  <a href="/#!/login"><input class="buttonstyle" type="button" value="Logout" ng-click="Logout()"></a>
   <!-- <a href=""><input type="button" value="Fields"></a> -->
   <!-- <a href=""><input type="button" value="Plants"></a> -->
   <!-- <a href=""><input type="button" value="Treatments"></a> -->
@@ -9,30 +9,32 @@
 
 <h3>Profile</h3>
 
-<h1>make new field</h1>
-<fieldset>
+<h4>Make new field</h4>
+<fieldset class="fieldstyle">
   <div>
     <label for="fieldname">Name</label>
     <input type="text" ng-model="newfield.name" placeholder="Fieldname" name="fieldname">
     <label for="date">Date</label>
     <input type="text" ng-model="newfield.date" placeholder="Date" name="date">
-    <input type="button" value="Make Field" ng-click="fieldMaker()">
+    <input class="buttonstyle" type="button" value="Make Field" ng-click="fieldMaker()">
 
   </div>
 </fieldset>
-<div ng-repeat="field in fields">
-  <fieldset>
+<h4>Current fields</h4>
+<div class="centertext" ng-repeat="field in fields">
+  <fieldset class="fieldstyle">
     <h4>Field Name: {{field.name}}</h4>
     <p>Date field was made: {{field.date}}</p>
-    <a href="/#!/fields/{{field.id}}"><input type="button" value="See treatments for this field"></a>
-    <input type="button" value="remove" ng-click="remove(field.id)">
-    <input type="button" value="edit" ng-click="editing = !editing">
+    <a href="/#!/plants/{{field.id}}"><input class="buttonstyle" type="button" value="See plants for this field"></a><br>
+    <a href="/#!/fields/{{field.id}}"><input class="buttonstyle" type="button" value="See treatments for this field"></a>
+    <input class="buttonstyle" type="button" value="remove" ng-click="remove(field.id)">
+    <input class="buttonstyle" type="button" value="edit" ng-click="editing = !editing">
     <div ng-if="editing">
       <label for="newName">Name</label>
       <input type="text" ng-model="editfield.name" placeholder="Fieldname" name="newName">
       <label for="newDate">Date</label>
       <input type="text" ng-model="editfield.date" placeholder="Date" name="newDate">
-      <input type="button" value="save" ng-click="save(field.id, editfield)">
+      <input class="buttonstyle" type="button" value="save" ng-click="save(field.id, editfield)">
     </div>
   </fieldset>
 </div>

@@ -1,7 +1,7 @@
 <div>
-  <a href=""><input type="button" value="Home"></a>
-  <a href="/#!/login"><input type="button" value="Logout" ng-click="Logout()"></a>
-  <a href="/#!/profile"><input type="button" value="Profile" ng-click="Profile()"></a>
+  <a href="/#!/"><input class="buttonstyle" type="button" value="Home"></a>
+  <a href="/#!/login"><input class="buttonstyle" type="button" value="Logout" ng-click="Logout()"></a>
+  <a href="/#!/profile"><input class="buttonstyle" type="button" value="Profile" ng-click="Profile()"></a>
   <!-- <a href=""><input type="button" value="Fields"></a> -->
   <!-- <a href=""><input type="button" value="Treatments"></a> -->
 </div>
@@ -10,29 +10,29 @@
 <h3>{{msg}}</h3>
 
 <h4>Add a plants to this field</h4>
-<fieldset>
+<fieldset class="fieldstyle">
   <div>
     <label for="plantname">Name</label>
     <input type="text" ng-model="newplant.name" placeholder="Plant" name="plantname">
     <label for="date">Date</label>
     <input type="text" ng-model="newplant.date" placeholder="Date" name="date">
-    <input type="button" value="Add Plant" ng-click="makePlant()">
+    <input class="buttonstyle" type="button" value="Add Plant" ng-click="makePlant()">
   </div>
 </fieldset>
 
-<div ng-repeat="plant in plants">
-  <fieldset>
+<div class="centertext" ng-repeat="plant in plants">
+  <fieldset class="fieldstyle">
     <h4>Plant Name: {{plant.name}}</h4>
     <p>Date plant was added: {{plant.date}}</p>
-    <a href="/#!/plants/{{field.id}}/{{plant.id}}"><input type="button" value="See treatments for this plant"></a>
-    <input type="button" value="remove" ng-click="remove(plant.id)">
-    <input type="button" value="edit" ng-click="editing = !editing">
+    <a href="/#!/plants/{{field.id}}/{{plant.id}}"><input class="buttonstyle" type="button" value="See treatments for this plant"></a>
+    <input class="buttonstyle" type="button" value="remove" ng-click="remove(plant.id)">
+    <input class="buttonstyle" type="button" value="edit" ng-click="editing = !editing">
     <div ng-if="editing">
       <label for="newName">Name</label>
       <input type="text" ng-model="editplant.name" placeholder="Plant name" name="newName">
       <label for="newDate">Date</label>
       <input type="text" ng-model="editplant.date" placeholder="Date" name="newDate">
-      <input type="button" value="save" ng-click="save(plant.id, editplant)">
+      <input class="buttonstyle" type="button" value="save" ng-click="save(plant.id, editplant)">
     </div>
   </fieldset>
 </div>

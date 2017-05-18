@@ -6,12 +6,12 @@ const Treatment = bookshelf.Model.extend({
   tableName: "treatment_fields"
 }, {
   getalltreatments: function(id) {
-    console.log("fired getalltreatments")
+    // console.log("fired getalltreatments")
     return this.forge()
     .where({field_id: id})
     .fetchAll({})
     .then((rows) => {
-      console.log("getalltreatments model")
+      // console.log("getalltreatments model")
       return rows
     })
     .catch((err) => {

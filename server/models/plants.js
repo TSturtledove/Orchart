@@ -13,11 +13,11 @@ const Plant = bookshelf.Model.extend({
   dependents: ["treatments"],
 
   getOnePlant: function(id) {
-    console.log("fired getOnePlant")
+    // console.log("fired getOnePlant")
     return this.forge({id})
     .fetch()
     .then((row) => {
-      console.log("getOnePlant model")
+      // console.log("getOnePlant model")
       return row
     })
     .catch((err) => {
@@ -27,12 +27,12 @@ const Plant = bookshelf.Model.extend({
   },
 
   getallplants: function(id) {
-    console.log("fired getallplants")
+    // console.log("fired getallplants")
     return this.forge()
     .where({field_id: id})
     .fetchAll({})
     .then((rows) => {
-      console.log("getallplants model")
+      // console.log("getallplants model")
       return rows
     })
     .catch((err) => {

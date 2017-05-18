@@ -1,3 +1,39 @@
 body {
-  background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image:
+    linear-gradient(
+      to bottom right,
+      #70dbdb,
+      #ffffff 70%
+      );
+  /*background-color: #ffffff;*/
+  font-family: 'Lora', 'Slabo 27px', 'Libre Baskerville', serif;
+
+}
+
+.centertext {
+  padding: auto;
+  margin: 20px;
+}
+
+.buttonstyle {
+  font-size: 1rem;
+  border-radius: 15%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image:
+    linear-gradient(
+      to bottom right,
+      #70dbdb,
+      #33cca6 70%
+      );
+  padding: 5px;
+  margin: 5px;
+  /*background-color: #33cca6;*/
+  border: none;
+}
+
+.fieldstyle {
+  border: 3px solid #49d0ae;
 }
