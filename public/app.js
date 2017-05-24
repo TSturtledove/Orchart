@@ -1,16 +1,37 @@
 
 const app = angular.module("Orchart", ["ngRoute"]);
 
-// const gatecheck = {
-//   gatecheck ($rootscope, authFactory) {
-//     authFactory.gatecheck()
-//     .then( (user) => {
-//       if(!user) {
-//         redirectTo: "/"
-//       }
-//     })
-//   }
-// }
+const gatecheck = {
+  // gatecheck ($rootscope, authFactory) {
+  //   authFactory.gatecheck()
+  //   .then( (user) => {
+  //     console.log("gatecheck in app")
+  //     console.log("gatecheck returned", user)
+  //     if(user == true) {
+  //       redirectTo: "/profile"
+  //     } else {
+  //       redirectTo: "/"
+  //     }
+  //   })
+  //   console.log("end of gatecheck")
+  // }
+
+
+  gatecheck: function() {
+    return new Promise((resolve, reject) => {
+      $http.get(`http://localhost:3000/api/v1/gatecheck`)
+      .then((data)=> {
+        console.log("returned gatecheck from backend to authFactory")
+        console.log("data", data)
+        console.log("data.data", data.data)
+        resolve(data.data)
+      }).catch( (err) => {
+        reject(err)
+      })
+    })
+  }
+
+}
 
 // $scope.Profile = () => {
 //   console.log("you hit the profile button")
@@ -38,8 +59,8 @@ app.config(["$routeProvider", function($routeProvider) {
     // resolve:
   }).when("/profile", {
     templateUrl: "angularPartials/profile.html",
-    controller: "profileCon"
-    // resolve:
+    controller: "profileCon",
+    resolve: gatecheck
   }).when("/fields/:fieldId", {
     templateUrl: "angularPartials/fields.html",
     controller: "fieldsCon"

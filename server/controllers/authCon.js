@@ -76,7 +76,7 @@ module.exports.destroy = (req, res) => {
 module.exports.gatecheck = (req, res) => {
   console.log("got to the gatecheck", req.user.name)
   if (req.user.name) {
-    return req.user.name
+    return res.json(true)
   }
   return res.json({})
 }
