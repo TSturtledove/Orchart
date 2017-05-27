@@ -1,6 +1,8 @@
 
 const app = angular.module("Orchart", ["ngRoute"]);
 
+
+
 const gatecheck = {
   // gatecheck ($rootscope, authFactory) {
   //   authFactory.gatecheck()
@@ -17,18 +19,21 @@ const gatecheck = {
   // }
 
 
-  gatecheck: function() {
-    return new Promise((resolve, reject) => {
-      $http.get(`http://localhost:3000/api/v1/gatecheck`)
-      .then((data)=> {
-        console.log("returned gatecheck from backend to authFactory")
-        console.log("data", data)
-        console.log("data.data", data.data)
-        resolve(data.data)
-      }).catch( (err) => {
-        reject(err)
-      })
-    })
+  gatecheck() {
+    // return new Promise((resolve, reject) => {
+    //   $http.get(`http://localhost:3000/api/v1/gatecheck`)
+    //   .then((data)=> {
+    //     console.log("returned gatecheck from backend to authFactory")
+    //     console.log("data", data)
+    //     console.log("data.data", data.data)
+    //     resolve(data.data)
+    //   }).catch( (err) => {
+    //     reject(err)
+    //   })
+    // })
+    console.log("user", req.user.name)
+    console.log("user")
+
   }
 
 }
