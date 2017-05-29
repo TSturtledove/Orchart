@@ -65,7 +65,7 @@ app.config(["$routeProvider", function($routeProvider) {
   }).when("/profile", {
     templateUrl: "angularPartials/profile.html",
     controller: "profileCon",
-    resolve: gatecheck
+    // resolve:
   }).when("/fields/:fieldId", {
     templateUrl: "angularPartials/fields.html",
     controller: "fieldsCon"

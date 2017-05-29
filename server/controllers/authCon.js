@@ -74,9 +74,12 @@ module.exports.destroy = (req, res) => {
 }
 
 module.exports.gatecheck = (req, res) => {
-  console.log("got to the gatecheck", req.user.name)
-  if (req.user.name) {
-    return res.json(true)
-  }
-  return res.json({})
+  // console.log("got to the gatecheck", req.user.name)
+  if (!req.user === true) {
+    console.log("redirecting to home")
+    return res.redirect("/#!/home")
+  }else{
+  console.log("redirecting to profile")
+  return res.redirect("/#!/profile")
+}
 }
