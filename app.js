@@ -48,6 +48,19 @@ app.use( (req, res, next) => {
 app.use(express.static("public"))
 app.use("/api/v1/", routes);
 
+// gatecheck
+// app.use( (req, res, next) => {
+//   // console.log("got to the gatecheck", req.user.name)
+//   if (!req.user === true) {
+//     console.log("redirecting to home")
+//     return res.render("/#!/home")
+//   }else{
+//   console.log("redirecting to profile")
+//   return res.render("/#!/profile")
+// }
+// }
+
+
 //the catch for the 404 error
 app.use(function(req, res, next) {
   let err = new Error("Not found, 404 triggered");

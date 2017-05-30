@@ -7,7 +7,7 @@ app.controller("homeCon", function($scope, authFactory) {
     console.log("you hit the profile button")
     authFactory.gatecheck()
     .then( () => {
-      res.redirect("#!/profile")
+      // res.redirect("#!/profile")
       console.log("got back from gatecheck")
     }).catch( (err)=> {
       console.log("got an error at gatecheck", err)
