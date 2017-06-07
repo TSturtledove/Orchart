@@ -13,6 +13,7 @@ body {
 }
 
 .centertext {
+  width: 50%;
   padding: auto;
   margin: 20px;
 }

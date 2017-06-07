@@ -15,6 +15,7 @@ const { knex } = require("./db/database");
 
 
 const app = express();
+// app.engine("html", require("ejs").renderFile)
 
 app.use(cors())
 //setting base route

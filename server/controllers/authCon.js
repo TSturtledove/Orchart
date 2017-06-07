@@ -89,9 +89,11 @@ module.exports.gatecheck = (req, res) => {
   // console.log("got to the gatecheck", req.user.name)
   if (!req.user === true) {
     console.log("redirecting to home")
-    return res.render("home")
+    // return res.render("home")
+    return res.redirect("/#!/home")
   }else{
   console.log("redirecting to profile")
-  return res.render("profile")
+  // return res.render("profile")
+  return res.redirect("/#!/profile")
 }
 }
