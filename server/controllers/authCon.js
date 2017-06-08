@@ -16,6 +16,7 @@ module.exports.authcheck = (req, res, next) =>{
       req.session.save( ()=> {
         res.redirect("/")
       })
+
       console.log("user logged in", user)
     })
   })(req, res, next)
