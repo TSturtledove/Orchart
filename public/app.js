@@ -3,40 +3,40 @@ const app = angular.module("Orchart", ["ngRoute"]);
 
 
 
-const gatecheck = {
-  // gatecheck ($rootscope, authFactory) {
-  //   authFactory.gatecheck()
-  //   .then( (user) => {
-  //     console.log("gatecheck in app")
-  //     console.log("gatecheck returned", user)
-  //     if(user == true) {
-  //       redirectTo: "/profile"
-  //     } else {
-  //       redirectTo: "/"
-  //     }
-  //   })
-  //   console.log("end of gatecheck")
-  // }
-
-
-  gatecheck() {
-    // return new Promise((resolve, reject) => {
-    //   $http.get(`http://localhost:3000/api/v1/gatecheck`)
-    //   .then((data)=> {
-    //     console.log("returned gatecheck from backend to authFactory")
-    //     console.log("data", data)
-    //     console.log("data.data", data.data)
-    //     resolve(data.data)
-    //   }).catch( (err) => {
-    //     reject(err)
-    //   })
-    // })
-    console.log("user", req.user.name)
-    console.log("user")
-
-  }
-
-}
+// const gatecheck = {
+//   // gatecheck ($rootscope, authFactory) {
+//   //   authFactory.gatecheck()
+//   //   .then( (user) => {
+//   //     console.log("gatecheck in app")
+//   //     console.log("gatecheck returned", user)
+//   //     if(user == true) {
+//   //       redirectTo: "/profile"
+//   //     } else {
+//   //       redirectTo: "/"
+//   //     }
+//   //   })
+//   //   console.log("end of gatecheck")
+//   // }
+//
+//
+//   gatecheck() {
+//     // return new Promise((resolve, reject) => {
+//     //   $http.get(`http://localhost:3000/api/v1/gatecheck`)
+//     //   .then((data)=> {
+//     //     console.log("returned gatecheck from backend to authFactory")
+//     //     console.log("data", data)
+//     //     console.log("data.data", data.data)
+//     //     resolve(data.data)
+//     //   }).catch( (err) => {
+//     //     reject(err)
+//     //   })
+//     // })
+//     console.log("user", req.user.name)
+//     console.log("user")
+//
+//   }
+//
+// }
 
 // $scope.Profile = () => {
 //   console.log("you hit the profile button")
@@ -53,6 +53,7 @@ const gatecheck = {
 // and factory for each.  Also figure out how to do
 // the resolve/authcheck properly
 app.config(["$routeProvider", function($routeProvider) {
+
   $routeProvider
   .when("/", {
     templateUrl: "angularPartials/home.html",

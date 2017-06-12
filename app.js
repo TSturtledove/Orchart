@@ -37,14 +37,14 @@ require("./server/lib/passport-strategies")
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.use( (req, res, next) => {
-  app.locals.username = req.user && req.user.username
-  console.log("locals", app.locals)
-  console.log("username", req.user.username)
-
-
-  next()
-})
+// app.use( (req, res, next) => {
+//   app.locals.username = req.user && req.user.username
+//   console.log("locals", app.locals)
+//   console.log("username", req.user.username)
+//
+//
+//   next()
+// })
 
 // app.use( (req, res, next) => {
 //   console.log("session?", req.session)
@@ -96,5 +96,6 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`)
 });
+
 
 module.exports = app;

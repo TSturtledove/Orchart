@@ -1,4 +1,4 @@
-app.controller("homeCon", function($scope, authFactory) {
+app.controller("homeCon", function($scope, $route, authFactory) {
   $scope.thing = "Home"
 
 //okay, so this is probably not supposed to be here but in the app.js
@@ -7,7 +7,7 @@ app.controller("homeCon", function($scope, authFactory) {
     console.log("you hit the profile button")
     authFactory.gatecheck()
     .then( () => {
-      // res.redirect("#!/profile")
+      $scope.$apply(function() { $route.path("/profile") })
       console.log("got back from gatecheck")
     }).catch( (err)=> {
       console.log("got an error at gatecheck", err)
