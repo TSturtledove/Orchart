@@ -35,12 +35,11 @@ app.factory("authFactory", function($http) {
     gatecheck: function() {
       return new Promise((resolve, reject) => {
         $http.get(`http://localhost:3000/api/v1/gatecheck`)
-        .then(()=> {
+        .then((data)=> {
           console.log("returned gatecheck from backend to authFactory")
-          // console.log("data", data)
-          // console.log("data.data", data.data)
-          // resolve(data.data)
-          resolve()
+          console.log("data", data)
+          console.log("data.data", data.data)
+          resolve(data.data)
         }).catch( (err) => {
           reject(err)
         })

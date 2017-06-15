@@ -1,6 +1,24 @@
 app.controller("homeCon", function($scope, $route, authFactory) {
   $scope.thing = "Home"
 
+const setbutton = () => {
+  console.log("fired button change")
+  authFactory.gatecheck()
+  .then( (e) => {
+    if (e == "nouser") {
+      $scope.thing = "There is no user logged in"
+      $scope.$apply()
+    }else{
+      $scope.thing = "A user is logged in"
+      $scope.$apply()
+
+    }
+  })
+}
+
+setbutton()
+
+
 //okay, so this is probably not supposed to be here but in the app.js
 // or somewhere else where it can be called by the "resolve" thing.
   $scope.Profile = () => {

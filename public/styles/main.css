@@ -38,3 +38,7 @@ body {
 .fieldstyle {
   border: 3px solid #49d0ae;
 }
+
+.ninja {
+  visibility: hidden;
+}
