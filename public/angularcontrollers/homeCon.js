@@ -1,15 +1,16 @@
 app.controller("homeCon", function($scope, $route, authFactory) {
   $scope.thing = "Home"
+  // $scope.pop = "ninja"
 
 const setbutton = () => {
   console.log("fired button change")
   authFactory.gatecheck()
   .then( (e) => {
     if (e == "nouser") {
-      $scope.thing = "There is no user logged in"
+      $scope.pop = "ninja"
       $scope.$apply()
     }else{
-      $scope.thing = "A user is logged in"
+      $scope.thing = " "
       $scope.$apply()
 
     }
@@ -23,13 +24,13 @@ setbutton()
 // or somewhere else where it can be called by the "resolve" thing.
   $scope.Profile = () => {
     console.log("you hit the profile button")
-    authFactory.gatecheck()
-    .then( () => {
-      $scope.$apply(function() { $route.path("/profile") })
-      console.log("got back from gatecheck")
-    }).catch( (err)=> {
-      console.log("got an error at gatecheck", err)
-    })
+  //   authFactory.gatecheck()
+  //   .then( () => {
+  //     $scope.$apply(function() { $route.path("/profile") })
+  //     console.log("got back from gatecheck")
+  //   }).catch( (err)=> {
+  //     console.log("got an error at gatecheck", err)
+  //   })
   }
 
   $scope.Logout = () => {
