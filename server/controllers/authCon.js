@@ -16,6 +16,7 @@ module.exports.authcheck = (req, res, next) =>{
       req.session.save( ()=> {
         res.redirect("/")
       })
+
       console.log("user logged in", user)
     })
   })(req, res, next)
@@ -73,10 +74,32 @@ module.exports.destroy = (req, res) => {
   console.log("logged out")
 }
 
+// module.exports.gatecheck = (req, res) => {
+//   // console.log("got to the gatecheck", req.user.name)
+//   if (!req.user === true) {
+//     console.log("redirecting to home")
+//     return res.redirect("/#!/home")
+//   }else{
+//   console.log("redirecting to profile")
+//   return res.redirect("/#!/profile")
+// }
+// }
+
+
 module.exports.gatecheck = (req, res) => {
-  console.log("got to the gatecheck", req.user.name)
-  if (req.user.name) {
-    return req.user.name
-  }
-  return res.json({})
+  // console.log("got to the gatecheck", req.user.name)
+  if (!req.user === true) {
+    console.log("redirecting to home")
+    let gate = "nouser"
+    // return res.render("home")
+    return res.json(gate)
+    // return res.redirect("/#!/home")
+  }else{
+  console.log("redirecting to profile")
+  let gate = "loggeduser"
+  return res.json(gate)
+
+  // return res.render("profile")
+  // return res.redirect("/#!/profile")
+}
 }

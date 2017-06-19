@@ -6,8 +6,6 @@ const {knex} = require("../../db/database")
 
 const Farmer = require("../models/farmers")
 
-
-
 passport.serializeUser((user, done) => done(null, user.id));//user.id is created by the table.increments in the migration
 
 passport.deserializeUser( (id, done) => {
@@ -18,8 +16,8 @@ passport.deserializeUser( (id, done) => {
 });
 
 const localStrategy = new Strategy({
-  usernameField: 'username',//stores the username for persistance during login session
-  passwordField: 'password'//stores the password for persistance during login session
+  usernameField: "username",//stores the username for persistance during login session
+  passwordField: "password"//stores the password for persistance during login session
 },
   (name, passwordStr, done) => {
     console.log("name",name)

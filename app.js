@@ -15,6 +15,7 @@ const { knex } = require("./db/database");
 
 
 const app = express();
+// app.engine("html", require("ejs").renderFile)
 
 app.use(cors())
 //setting base route
@@ -36,10 +37,14 @@ require("./server/lib/passport-strategies")
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.use( (req, res, next) => {
-  app.locals.username = req.user && req.user.username
-  next()
-})
+// app.use( (req, res, next) => {
+//   app.locals.username = req.user && req.user.username
+//   console.log("locals", app.locals)
+//   console.log("username", req.user.username)
+//
+//
+//   next()
+// })
 
 // app.use( (req, res, next) => {
 //   console.log("session?", req.session)
@@ -47,6 +52,19 @@ app.use( (req, res, next) => {
 // })
 app.use(express.static("public"))
 app.use("/api/v1/", routes);
+
+// gatecheck
+// app.use( (req, res, next) => {
+//   // console.log("got to the gatecheck", req.user.name)
+//   if (!req.user === true) {
+//     console.log("redirecting to home")
+//     return res.render("/#!/home")
+//   }else{
+//   console.log("redirecting to profile")
+//   return res.render("/#!/profile")
+// }
+// }
+
 
 //the catch for the 404 error
 app.use(function(req, res, next) {
@@ -78,5 +96,6 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`)
 });
+
 
 module.exports = app;

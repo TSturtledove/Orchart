@@ -13,6 +13,7 @@ body {
 }
 
 .centertext {
+  width: 50%;
   padding: auto;
   margin: 20px;
 }
@@ -36,4 +37,8 @@ body {
 
 .fieldstyle {
   border: 3px solid #49d0ae;
+}
+
+.ninja {
+  visibility: hidden;
 }
