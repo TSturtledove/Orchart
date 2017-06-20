@@ -2,20 +2,26 @@ app.controller("homeCon", function($scope, $route, authFactory) {
   $scope.thing = "Home"
   // $scope.pop = "ninja"
 
-const setbutton = () => {
-  console.log("fired button change")
-  authFactory.gatecheck()
-  .then( (e) => {
-    if (e == "nouser") {
-      $scope.pop = "ninja"
-      $scope.$apply()
-    }else{
-      $scope.thing = " "
-      $scope.$apply()
+    const setbutton = () => {
+      console.log("fired button change")
+      authFactory.gatecheck()
+      .then( (e) => {
+        if (e == "nouser") {
+          $scope.pop = "ninja"
+          $scope.cap = " "
+          $scope.lin = true
+          $scope.usergo = false
+          $scope.$apply()
+        }else{
+          $scope.pop = " "
+          $scope.cap = "ninja"
+          $scope.lin = false
+          $scope.usergo = true
+          $scope.$apply()
 
+        }
+      })
     }
-  })
-}
 
 setbutton()
 
@@ -38,6 +44,7 @@ setbutton()
     authFactory.logoutFarmer()
     console.log("got back to logout frontend")
     $scope.msg="You have logged out"
+    
   }
 
 

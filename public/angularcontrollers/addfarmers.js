@@ -1,11 +1,37 @@
 app.controller("addfarmers", function($scope, authFactory){
   // $scope.user ={username:"", password:""}
+
+  const setbutton = () => {
+    console.log("fired button change")
+    authFactory.gatecheck()
+    .then( (e) => {
+      if (e == "nouser") {
+        $scope.pop = "ninja"
+        // $scope.cap = " "
+        // $scope.lin = true
+        $scope.usergo = false
+        $scope.$apply()
+      }else{
+        $scope.pop = " "
+        // $scope.cap = "ninja"
+        // $scope.lin = false
+        $scope.usergo = true
+        $scope.$apply()
+
+      }
+    })
+  }
+
+  setbutton()
+
+
   $scope.Logout = () => {
     console.log("you hit the logout")
     authFactory.logoutFarmer()
     .then( ()=> {
       console.log("got back to logout frontend")
       $scope.msg="You have logged out"
+      setbutton()
 
     }).catch( (err) => {
       console.log("error in logging out", err)
@@ -37,6 +63,7 @@ app.controller("addfarmers", function($scope, authFactory){
     .then((user) => {
       console.log("all the way", user)
       $scope.msg="You are now logged in"
+      setbutton()
       $scope.$apply()
 
 
