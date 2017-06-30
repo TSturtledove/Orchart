@@ -1,7 +1,7 @@
 app.controller("plantsCon", function($scope, $routeParams, authFactory, fieldFactory, plantsFactory){
   // $scope.user ={username:"", password:""}
 const fieldId = $routeParams.fieldId
-
+// $scope.fieldlink = fieldId
 const popPage = ()=> {
 fieldFactory.getField($routeParams.fieldId)
   .then((field) => {
