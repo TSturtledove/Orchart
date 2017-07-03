@@ -1,6 +1,10 @@
 <div>
-  <!-- <a href="/#!/login"><input type="button" value="Login"></a> -->
-  <a href="/#!/login"><input class="buttonstyle" type="button" value="Logout" ng-click="Logout()"></a>
+
+  <div ng-if="usergo">
+    <a href="/#!/login"><input class="buttonstyle {{pop}}" type="button" value="Logout" ng-click="Logout()"></a>
+    <a href="/#!/profile"><input class="buttonstyle {{pop}}" type="button" value="Profile" ng-click="Profile()"></a>
+  </div>
+
   <a href="/#!/"><input class="buttonstyle" type="button" value="Home"></a>
 </div>
 <h3>{{msg}}</h3>

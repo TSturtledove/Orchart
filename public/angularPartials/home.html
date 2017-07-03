@@ -1,11 +1,15 @@
 <h2>{{thing}}</h2>
 <div>
-  <a href="/#!/login"><input class="buttonstyle" type="button" value="Login"></a>
+<div ng-if="lin">
+
+  <a href="/#!/login"><input class="buttonstyle {{cap}}" type="button" value="Login"></a>
+</div>
+
+<div ng-if="usergo">
   <a href="/#!/login"><input class="buttonstyle {{pop}}" type="button" value="Logout" ng-click="Logout()"></a>
   <a href="/#!/profile"><input class="buttonstyle {{pop}}" type="button" value="Profile" ng-click="Profile()"></a>
-  <!-- <a href=""><input type="button" value="Fields"></a> -->
-  <!-- <a href=""><input type="button" value="Plants"></a> -->
-  <!-- <a href=""><input type="button" value="Treatments"></a> -->
+</div>
+
 </div>
 <div>
   <p>Welcome to Orchart, the online field and orchard organizer.<br>
