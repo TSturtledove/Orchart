@@ -20,7 +20,8 @@
   </div>
 </fieldset>
 
-<div class="centertext moving" ng-repeat="plant in plants">
+<div draggable class="centertext moving" ng-repeat="plant in plants">
+  <span >
   <fieldset class="fieldstyle">
     <h4>Plant Name: {{plant.name}}</h4>
     <p>Date plant was added: {{plant.date}}</p>
@@ -35,4 +36,5 @@
       <input class="buttonstyle" type="button" value="save" ng-click="save(plant.id, editplant)">
     </div>
   </fieldset>
+</span>
 </div>
