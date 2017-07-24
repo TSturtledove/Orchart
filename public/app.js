@@ -92,24 +92,42 @@ app.config(["$routeProvider", function($routeProvider) {
 
 
 
-
-
-//from Stories, use as reference for the security gate for Angular
-// const checkForAuth = {
-//   checkForAuth ($location, $rootScope) {
-//     const authReady = firebase.auth().onAuthStateChanged(function(user){
-//       authReady()
-//       if (!user) {
-//         console.log("there be no one here")
-//       }
-//       else {
-//         $rootScope.uid = firebase.auth().currentUser.uid
-//         console.log("there be someone signed in")
-//       }
-//     })
-//   }
-// }
+//Use this as reference for making the "draggable" boxes
+// angular.module('app', [])
+//   .directive('dirt', ['$document', function($document) {
+//     return {
+//       link: function(scope, element, attr) {
+//         var startX = 0, startY = 0, x = 0, y = 0;
 //
-// const authCheck = {
+//         element.css({
+//           position: 'reletive',
+//           // border: '1px solid red',
+//           // backgroundColor: 'lightgrey',
+//           // cursor: 'pointer'
+//         });
 //
-// }
+//         element.on('mousedown', function(event) {
+//           // Prevent default dragging of selected content
+//           event.preventDefault();
+//           startX = event.pageX - x;
+//           startY = event.pageY - y;
+//           $document.on('mousemove', mousemove);
+//           $document.on('mouseup', mouseup);
+//         });
+//
+//         function mousemove(event) {
+//           y = event.pageY - startY;
+//           x = event.pageX - startX;
+//           element.css({
+//             top: y + 'px',
+//             left: x + 'px'
+//           });
+//         }
+//
+//         function mouseup() {
+//           $document.off('mousemove', mousemove);
+//           $document.off('mouseup', mouseup);
+//         }
+//       }
+//     };
+//   }]);
