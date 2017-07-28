@@ -8,8 +8,11 @@
 
 <h3>Plants for field {{field.name}}</h3>
 <h3>{{msg}}</h3>
-
 <h4>Add a plants to this field</h4>
+
+<span dirt>Drag Me</span>
+
+
 <fieldset class="fieldstyle">
   <div>
     <label for="plantname">Name</label>
@@ -21,7 +24,7 @@
 </fieldset>
 
 <div draggable class="centertext moving" ng-repeat="plant in plants">
-  <span >
+  <span>
   <fieldset class="fieldstyle">
     <h4>Plant Name: {{plant.name}}</h4>
     <p>Date plant was added: {{plant.date}}</p>
