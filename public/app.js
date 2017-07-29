@@ -95,7 +95,7 @@ app.directive("dirt", ["$document", function($document) {
       var startX = 0, startY = 0, x = 0, y = 0;
 
       element.css({
-        position: 'reletive',
+        position: 'relative',
         // border: '1px solid red',
         // backgroundColor: 'lightgrey',
         cursor: 'pointer'
