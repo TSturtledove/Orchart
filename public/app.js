@@ -90,6 +90,7 @@ app.config(["$routeProvider", function($routeProvider) {
 
 
 app.directive("dirt", ["$document", function($document) {
+  // console.log("yothere")
   return {
     link: function(scope, element, attr) {
       var startX = 0, startY = 0, x = 0, y = 0;
@@ -120,8 +121,11 @@ app.directive("dirt", ["$document", function($document) {
       }
 
       function mouseup() {
+        // console.log("check coordinates");
         $document.off('mousemove', mousemove);
         $document.off('mouseup', mouseup);
+        // console.log("X is now", x);
+        // console.log("Y is now", y);
       }
     }
   }
