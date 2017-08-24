@@ -88,7 +88,8 @@ app.config(["$routeProvider", function($routeProvider) {
   })
 }])
 
-
+//figure out a way to keep this draggable setup but allow
+// people to still edit the text of the plants
 app.directive("dirt", ["$document", function($document) {
   // console.log("yothere")
   return {
@@ -104,7 +105,9 @@ app.directive("dirt", ["$document", function($document) {
 
       element.on('mousedown', function(event) {
         // Prevent default dragging of selected content
-        event.preventDefault();
+        event.preventDefault(); //turning this line off lets you edit
+        // the text in the edit field, but it also enables
+        // the click/drag highlighting of words
         startX = event.pageX - x;
         startY = event.pageY - y;
         $document.on('mousemove', mousemove);
