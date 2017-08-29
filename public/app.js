@@ -105,7 +105,7 @@ app.directive("dirt", ["$document", function($document) {
 
       element.on('mousedown', function(event) {
         // Prevent default dragging of selected content
-        event.preventDefault(); //turning this line off lets you edit
+        // event.preventDefault(); //turning this line off lets you edit
         // the text in the edit field, but it also enables
         // the click/drag highlighting of words
         startX = event.pageX - x;

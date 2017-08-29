@@ -39,6 +39,9 @@ body {
   border: 3px solid #49d0ae;
 }
 
+.textdehighlight {
+  user-select: none;
+}
 .ninja {
   visibility: hidden;
 }
