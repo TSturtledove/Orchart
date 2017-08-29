@@ -47,7 +47,7 @@ router.patch("/planttreatmentedit", editPlantTreatment)
 //for reference it is like the concat-dating project
 // router.use(require("./profileRoute"));//route for profile
 //route to show profile
-//needs a route for editing information on th eprofile (patch or post?)
+//needs a route for editing information on the profile (patch or post?)
 //route for deleting profile?
 // router.use(require("./fieldRoute"));//route for specific field
 //route to show field
